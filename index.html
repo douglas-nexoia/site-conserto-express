@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conserto Express | Assistência Técnica de Geladeiras e Lavadoras</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Customizado (Vanilla CSS Premium) -->
+    <style>
+        :root {
+            --bg-main: #090d16;
+            --bg-card: #121824;
+            --bg-card-hover: #182235;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(16, 185, 129, 0.3);
+            
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            
+            --primary: #10b981; /* Verde Esmeralda (WhatsApp / Conversão) */
+            --primary-hover: #059669;
+            --secondary: #0ea5e9; /* Azul Ciano (Refrigeração / Confiança) */
+            --accent: #f59e0b; /* Âmbar (Destaques / Estrelas) */
+            
+            --font-title: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container Limitador */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ------------------ CABEÇALHO (NAV) ------------------ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo span {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .logo span span {
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* ------------------ HERO SECTION ------------------ */
+        .hero-section {
+            position: relative;
+            padding: 100px 0 80px;
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.08), transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.06), transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-section h1 {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: clamp(34px, 4.5vw, 52px);
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin: 0 0 20px;
+            color: #ffffff;
+        }
+
+        .hero-section h1 span {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--text-muted);
+            margin: 0 0 36px;
+            font-weight: 300;
+            max-width: 520px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -8px rgba(16, 185, 129, 0.5);
+            transition: var(--transition-smooth);
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        .btn-primary-wa:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -6px rgba(16, 185, 129, 0.6);
+        }
+
+        .btn-secondary-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-size: 15.5px;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary-phone:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .hero-bullets {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .bullet-item i {
+            color: var(--secondary);
+            font-size: 16px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px -25px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            max-width: 440px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-card-floating {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: rgba(18, 24, 36, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .hero-card-floating i {
+            font-size: 20px;
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card-floating span {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 14.5px;
+        }
+
+        /* ------------------ METRICS BAR ------------------ */
+        .metrics-bar {
+            background: rgba(18, 24, 36, 0.5);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .metric-item h3 {
+            font-family: var(--font-title);
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 6px;
+            color: var(--primary);
+        }
+
+        .metric-item p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* ------------------ SERVIÇOS SECTION ------------------ */
+        .services-section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--secondary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-title);
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            margin: 0 0 16px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin: 0 auto;
+            max-width: 500px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 44px;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            color: var(--secondary);
+            background: rgba(14, 165, 233, 0.08);
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon {
+            color: #ffffff;
+            background: var(--secondary);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-title);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 14px;
+            color: #ffffff;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin: 0 0 28px;
+            font-weight: 300;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .service-features li i {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .service-card .btn-card-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .btn-card-wa {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ------------------ SOBRE SECTION ------------------ */
+        .about-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--bg-main) 0%, rgba(18, 24, 36, 0.4) 50%, var(--bg-main) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image-container {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+        }
+
+        .about-image-container img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--secondary);
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 15px 30px -10px rgba(14, 165, 233, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-badge span {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-title);
+            font-size: clamp(28px, 3.5vw, 38px);
+            font-weight: 700;
+            margin: 0 0 20px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin: 0 0 24px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 36px;
+        }
+
+        .about-feat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .about-feat-item i {
+            color: var(--primary);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .about-feat-item h4 {
+            margin: 0 0 6px;
+            font-family: var(--font-title);
+            font-weight: 600;
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .about-feat-item p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* ------------------ PROCESSO SECTION ------------------ */
+        .process-section {
+            padding: 100px 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .process-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px 28px;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .process-card:hover {
+            border-color: rgba(14, 165, 233, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .process-step {
+            font-family: var(--font-title);
+            font-size: 40px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .process-card:hover .process-step {
+            color: rgba(14, 165, 233, 0.15);
+        }
+
+        .process-card h3 {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+
+        .process-card p {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin: 0;
+            font-weight: 300;
+        }
+
+        /* ------------------ BRANDS SECTION ------------------ */
+        .brands-section {
+            padding: 60px 0;
+            background: rgba(18, 24, 36, 0.3);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brands-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            filter: brightness(0) invert(1) opacity(0.55);
+            height: auto; max-height: 36px; width: auto; max-width: 160px;
+            max-width: 150px;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+
+        .brand-logo:hover {
+            filter: brightness(0) invert(1) opacity(1);
+            transform: scale(1.05);
+        }
+
+        /* ------------------ FAQ SECTION ------------------ */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .faq-question {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            font-family: var(--font-title);
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .faq-question i {
+            color: var(--secondary);
+            font-size: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 24px;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding-bottom: 24px;
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* ------------------ CTA URGENTE ------------------ */
+        .cta-urgente {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-urgente::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm20 80c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM90 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm-20 80c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-urgente-wrapper {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-urgente h2 {
+            font-family: var(--font-title);
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 800;
+            margin: 0 0 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-urgente p {
+            font-size: 17.5px;
+            line-height: 1.65;
+            margin: 0 0 36px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .btn-cta-urgente-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #10b981;
+            font-size: 17px;
+            font-weight: 700;
+            padding: 18px 44px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.25);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-cta-urgente-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px -8px rgba(0, 0, 0, 0.35);
+            background: #f7f9fc;
+        }
+
+        /* ------------------ FOOTER ------------------ */
+        footer {
+            background: #060910;
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 40px;
+            color: var(--text-muted);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.7fr 0.7fr 0.9fr;
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-about .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links h3 {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact h3 {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .footer-contact ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .footer-contact ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-contact ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+        }
+
+        .footer-contact ul li i {
+            color: var(--primary);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .footer-contact strong {
+            display: block;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-weight: 300;
+        }
+
+        /* ------------------ TESTIMONIALS SECTION ------------------ */
+        .testimonials-section {
+            padding: 100px 0;
+            background: rgba(18, 24, 36, 0.2);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .google-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 32px;
+            max-width: 480px;
+            margin: 0 auto 56px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+        }
+
+        .google-badge-text {
+            text-align: left;
+        }
+
+        .google-badge-text h4 {
+            margin: 0 0 4px;
+            font-family: var(--font-title);
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .google-badge-text p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .google-badge-text a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 13.5px;
+        }
+
+        .google-badge-text a:hover {
+            text-decoration: underline;
+        }
+
+        .google-badge i.fa-google {
+            font-size: 36px;
+            background: linear-gradient(120deg, #4285f4, #ea4335, #fbbc05, #34a853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.08);
+        }
+
+        .stars-container {
+            color: var(--accent);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--text-muted);
+            margin: 0 0 24px;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--secondary);
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-info h4 {
+            margin: 0 0 2px;
+            font-family: var(--font-title);
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .user-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ------------------ ANIMAÇÕES ------------------ */
+        @keyframes float-slow {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* ------------------ RESPONSIVIDADE (MEDIA QUERIES) ------------------ */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 56px;
+                text-align: center;
+            }
+            .hero-section h1, .hero-section p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-ctas, .hero-bullets {
+                justify-content: center;
+            }
+            .hero-image-wrapper {
+                order: -1;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .about-image-wrapper {
+                max-width: 550px;
+                margin: 0 auto;
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+            nav {
+                gap: 20px;
+            }
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            /* Carrossel de Depoimentos no Mobile */
+            .testimonials-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 16px !important;
+                padding-bottom: 20px !important;
+                scroll-padding: 0 24px !important;
+                margin-left: -24px !important;
+                margin-right: -24px !important;
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            .testimonials-grid::-webkit-scrollbar {
+                height: 4px;
+            }
+            .testimonials-grid::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.02);
+            }
+            .testimonials-grid::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+            }
+            .testimonial-card {
+                flex: 0 0 85% !important;
+                scroll-snap-align: center !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Carrossel de Etapas de Atendimento no Mobile */
+            .process-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 16px !important;
+                padding-bottom: 20px !important;
+                scroll-padding: 0 24px !important;
+                margin-left: -24px !important;
+                margin-right: -24px !important;
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            .process-grid::-webkit-scrollbar {
+                height: 4px;
+            }
+            .process-grid::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.02);
+            }
+            .process-grid::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+            }
+            .process-card {
+                flex: 0 0 78% !important;
+                scroll-snap-align: center !important;
+                box-sizing: border-box !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 14px;
+                text-align: center;
+            }
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            .btn-primary-wa, .btn-secondary-phone {
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .hero-card-floating {
+                left: 10px;
+                bottom: -10px;
+            }
+        }
+    </style>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TNBKDRH2');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNBKDRH2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Conserto<span>Express</span></span>
+                </a>
+                <nav>
+                    <a href="#servicos">Serviços</a>
+                    <a href="bebedouros-e-purificadores.html">Bebedouros & Purificadores</a>
+                    <a href="#sobre">Quem Somos</a>
+                    <a href="#processo">Como Funciona</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#faq">Dúvidas</a>
+                </nav>
+                <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="nav-btn">
+                    Agendar Visita
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-location-dot"></i> Atendimento em Poços de Caldas e Região
+                    </div>
+                    <h1>Geladeira ou Máquina de Lavar Quebrada? <span>Consertamos Hoje!</span></h1>
+                    <p>Assistência técnica especializada a domicílio. Serviços rápidos com técnicos certificados, peças de alta qualidade e garantia por escrito.</p>
+                    
+                    <div class="hero-ctas">
+                        <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="btn-primary-wa">
+                            <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
+                        </a>
+                        <a href="tel:+553520390020" class="btn-secondary-phone">
+                            <i class="fa-solid fa-phone"></i> (35) 2039-0020
+                        </a>
+                    </div>
+                    
+                    <div class="hero-bullets">
+                        <div class="bullet-item">
+                            <i class="fa-solid fa-circle-check"></i> Garantia de 90 Dias
+                        </div>
+                        <div class="bullet-item">
+                            <i class="fa-solid fa-circle-check"></i> Peças Originais
+                        </div>
+                        <div class="bullet-item">
+                            <i class="fa-solid fa-circle-check"></i> Visita Hoje
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img src="uploads/imagens/conserto_express_fachada.webp" alt="Fachada Conserto Express">
+                        <div class="hero-card-floating">
+                            <i class="fa-solid fa-house-chimney-medical"></i>
+                            <span>Atendimento no<br>Mesmo Dia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="metrics-bar">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <h3>+10 mil</h3>
+                    <p>Aparelhos Consertados</p>
+                </div>
+                <div class="metric-item">
+                    <h3>35 min</h3>
+                    <p>Tempo Médio de Resposta</p>
+                </div>
+                <div class="metric-item">
+                    <h3>100%</h3>
+                    <p>Técnicos Certificados</p>
+                </div>
+                <div class="metric-item">
+                    <h3>90 dias</h3>
+                    <p>Garantia em Serviços</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS SECTION -->
+    <section class="services-section" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">O que fazemos</span>
+                <h2>Especialistas em Assistência Técnica</h2>
+                <p>Equipe preparada para diagnosticar e solucionar problemas no mesmo dia no seu próprio domicílio.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card Geladeiras -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">
+                            <i class="fa-solid fa-snowflake"></i>
+                        </div>
+                        <h3>Geladeiras & Freezers</h3>
+                        <p>Conserto rápido de problemas de refrigeração, troca de borracha, compressor, carga de gás e reparos elétricos em todas as marcas, modelos residenciais e comerciais.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Não gela</li>
+                            <li><i class="fa-solid fa-check"></i> Vazamento de água</li>
+                            <li><i class="fa-solid fa-check"></i> Barulho excessivo</li>
+                            <li><i class="fa-solid fa-check"></i> Alarme tocando</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="btn-card-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Consertar Geladeira
+                    </a>
+                </div>
+
+                <!-- Card Lavadoras -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">
+                            <i class="fa-solid fa-soap"></i>
+                        </div>
+                        <h3>Máquinas de Lavar & Secadoras</h3>
+                        <p>Manutenção completa em lavadoras e lava e seca. Ajustamos problemas de centrifugação, placa eletrônica, rolamentos, suspensão e barulhos indesejados.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Não centrifuga</li>
+                            <li><i class="fa-solid fa-check"></i> Não solta água</li>
+                            <li><i class="fa-solid fa-check"></i> Tremendo muito</li>
+                            <li><i class="fa-solid fa-check"></i> Erro no painel</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="btn-card-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Consertar Máquina
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS SECTION -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="brands-wrapper">
+                <img loading="lazy" src="uploads/imagens/Brastemp.webp" alt="Brastemp" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/consul-bem-pensado-vector-logo.webp" alt="Consul" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/Electrolux-Emblema.webp" alt="Electrolux" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/samsung-logo.webp" alt="Samsung" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/panasonic.webp" alt="Panasonic" class="brand-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE SECTION -->
+    <section class="about-section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image-container">
+                        <img loading="lazy" src="uploads/imagens/conserto_express_interno.webp" alt="Escritório Conserto Express">
+                        <div class="about-badge">
+                            <span>+5</span> anos de mercado
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <span class="section-tag">Quem somos</span>
+                    <h2>Excelência e Compromisso com Eletrodomésticos</h2>
+                    <p>A **Conserto Express** é referência em Poços de Caldas no serviço de manutenção de refrigeradores e lavadoras. Iniciamos nossa trajetória focando em duas coisas simples: agilidade real para o cliente e honestidade técnica.</p>
+                    <p>Sabemos o quanto uma geladeira quebrada ou uma máquina sem funcionar impactam a rotina de uma casa ou negócio. Por isso, trabalhamos apenas com técnicos treinados e peças de alta qualidade, garantindo que o reparo dure.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feat-item">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <div>
+                                <h4>Visitas Agendadas</h4>
+                                <p>Combinamos o horário ideal para você, sem esperas de um dia inteiro.</p>
+                            </div>
+                        </div>
+                        <div class="about-feat-item">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                            <div>
+                                <h4>Preço Transparente</h4>
+                                <p>Orçamento detalhado antes de iniciar o serviço, sem taxas escondidas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSO SECTION -->
+    <section class="process-section" id="processo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Praticidade</span>
+                <h2>Como Funciona Nosso Atendimento</h2>
+                <p>Do seu primeiro contato pelo WhatsApp até a entrega do serviço com garantia.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-step">01</div>
+                    <h3>Agendamento</h3>
+                    <p>Você chama no WhatsApp ou liga e nós agendamos o melhor horário para a visita.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">02</div>
+                    <h3>Visita Técnico</h3>
+                    <p>O técnico vai até sua residência, analisa o aparelho e identifica a falha.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">03</div>
+                    <h3>Orçamento</h3>
+                    <p>Apresentamos o orçamento na hora com as peças necessárias e o valor de mão de obra.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">04</div>
+                    <h3>Execução</h3>
+                    <p>Com o orçamento aprovado, realizamos o conserto no local e entregamos a garantia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS SECTION -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2>Quem Já Contratou, Recomenda</h2>
+                <p>Nossa dedicação se reflete na satisfação de quem confia no nosso trabalho.</p>
+            </div>
+            
+            <div class="google-badge">
+                <i class="fa-brands fa-google"></i>
+                <div class="google-badge-text">
+                    <h4>Avaliado em 5.0 / 5.0</h4>
+                    <p>Nota máxima baseada em avaliações de clientes.</p>
+                    <a href="https://share.google/f8xDy2d9012VfHSWG" target="_blank">Ver avaliações no Google <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Excelente atendimento! Minha geladeira Brastemp parou de gelar no domingo e eles vieram na segunda de manhã. O técnico resolveu o problema rápido e o preço foi justo. Recomendo muito!"</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">CH</div>
+                        <div class="user-info">
+                            <h4>Carlos Henrique</h4>
+                            <span>Vila Nova</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Levei minha máquina de lavar que não estava centrifugando e o atendimento foi excelente. Diagnóstico sincero e conserto rápido com peças de qualidade. Empresa muito honesta."</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">MS</div>
+                        <div class="user-info">
+                            <h4>Mariana Souza</h4>
+                            <span>Poços de Caldas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Fiz a higienização completa e troca de filtro do meu purificador Soft na loja física deles. O atendimento foi rápido, a água ficou excelente e o preço foi super justo. Nota 10!"</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">JR</div>
+                        <div class="user-info">
+                            <h4>José Roberto</h4>
+                            <span>Centro (Comerciante)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dúvidas frequentes</span>
+                <h2>Perguntas Respondidas</h2>
+                <p>Confira as principais dúvidas de clientes sobre nossa assistência técnica.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>O conserto é feito no local ou levam o aparelho?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Em 95% dos casos, o conserto é realizado no próprio local (sua residência ou comércio). Nossos técnicos andam com as ferramentas e peças principais no veículo para resolver no mesmo dia.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quais são as formas de pagamento aceitas?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos Pix, cartões de débito e crédito (com possibilidade de parcelamento) e dinheiro. O pagamento só é feito após a conclusão e teste do serviço.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Vocês cobram taxa de visita?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A taxa de visita é cobrada para cobrir o deslocamento e o diagnóstico técnico do profissional. No entanto, se você aprovar e realizar o conserto conosco, a taxa de visita é **isenta** (você paga apenas pelo conserto).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Qual é o prazo de garantia?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Todos os nossos serviços de reparo acompanham garantia legal e contratual de 90 dias por escrito, cobrindo a mão de obra e as peças trocadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA URGENTE -->
+    <section class="cta-urgente">
+        <div class="container">
+            <div class="cta-urgente-wrapper">
+                <h2>Precisa de um Serviço com Urgência?</h2>
+                <p>Nossos técnicos estão prontos em Poços de Caldas e prontos para atender seu chamado no mesmo dia. Agende agora e resolva seu problema.</p>
+                <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="btn-cta-urgente-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Agendar Atendimento Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span>Conserto<span>Express</span></span>
+                    </a>
+                    <p>Assistência técnica especializada de confiança em Poços de Caldas e região. Honestidade e rapidez no atendimento.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#sobre">Quem Somos</a></li>
+                        <li><a href="#processo">Como Funciona</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a>
+                    <a href="#faq">Dúvidas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#servicos">Conserto de Geladeiras</a></li>
+                        <li><a href="#servicos">Conserto de Freezers</a></li>
+                        <li><a href="#servicos">Conserto de Lavadoras</a></li>
+                        <li><a href="bebedouros-e-purificadores.html">Bebedouros & Purificadores</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Endereço:</strong>
+                                <a href="https://share.google/f8xDy2d9012VfHSWG" target="_blank" style="color: var(--text-muted); text-decoration: none; transition: var(--transition-smooth);">R. Cel. Virgílio Silva - Vila Nova, Poços de Caldas - MG, 37701-642</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Telefone:</strong>
+                                <a href="tel:+553520390020">(35) 2039-0020</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp:</strong>
+                                <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank">(35) 9 9995-7581</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Conserto Express. Todos os direitos reservados.</p>
+                <p>Criado com foco em alta performance</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Accordion do FAQ -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                } else {
+                    // Fechar outros abertos
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+                    document.querySelectorAll('.faq-question i').forEach(ic => ic.classList.replace('fa-minus', 'fa-plus'));
+                    
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
