@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Rounded dark background matching the site theme -->
+  <rect width="512" height="512" rx="140" fill="#121824"/>
+  
+  <!-- Stylized green wrench and blue screwdriver cross -->
+  <g transform="translate(256, 256) rotate(45)">
+    <!-- Screwdriver shaft & handle -->
+    <rect x="-12" y="-180" width="24" height="240" rx="6" fill="#0ea5e9"/>
+    <rect x="-24" y="60" width="48" height="120" rx="12" fill="#0ea5e9"/>
+    <!-- Wrench shaft & head -->
+    <rect x="-180" y="-16" width="240" height="32" rx="8" fill="#10b981"/>
+    <circle cx="-180" cy="0" r="48" fill="#10b981"/>
+    <circle cx="-180" cy="0" r="22" fill="#121824"/>
+    <!-- Wrench jaw cut -->
+    <polygon points="-180,-30 -140,-10 -140,10 -180,30 -220,0" fill="#121824"/>
+  </g>
+</svg>
