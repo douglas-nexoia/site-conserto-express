@@ -1079,6 +1079,19 @@
             100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
+        /* Mobile Menu Toggle Button (hidden on desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 110;
+            transition: var(--transition-smooth);
+            padding: 8px;
+        }
+
         /* ------------------ RESPONSIVIDADE (MEDIA QUERIES) ------------------ */
         @media (max-width: 992px) {
             .hero-grid {
@@ -1122,15 +1135,63 @@
         }
 
         @media (max-width: 768px) {
-            .nav-wrapper {
-                flex-direction: column;
-                height: auto;
-                padding: 16px 0;
-                gap: 16px;
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger button on mobile */
             }
+
+            /* Nav element becomes a clean absolute overlay dropdown */
             nav {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(9, 13, 22, 0.98);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                padding: 24px;
                 gap: 20px;
+                box-sizing: border-box;
+                display: none !important; /* Hidden by default */
+                z-index: 99;
             }
+
+            nav.active {
+                display: flex !important;
+                animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            }
+
+            .nav-wrapper {
+                flex-direction: row !important; /* Keep logo and hamburger on same line */
+                height: 80px;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            /* Hide the main header button on mobile header row */
+            .nav-wrapper > .nav-btn {
+                display: none !important;
+            }
+
+            /* Mobile-only CTA link inside the nav menu */
+            nav .nav-btn-mobile {
+                display: block !important;
+                background: var(--primary);
+                color: #ffffff !important;
+                text-align: center;
+                padding: 12px;
+                border-radius: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                margin-top: 10px;
+                transition: var(--transition-smooth);
+            }
+            
+            nav .nav-btn-mobile:hover {
+                background: var(--primary-hover);
+            }
+
             .nav-btn {
                 width: 100%;
                 text-align: center;
@@ -1263,7 +1324,11 @@
                     <a href="#processo">Como Funciona</a>
                     <a href="#depoimentos">Depoimentos</a>
                     <a href="#faq">Dúvidas</a>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="nav-btn-mobile" style="display: none;">Agendar Visita</a>
                 </nav>
+                <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="nav-btn">
                     Agendar Visita
                 </a>
@@ -1719,5 +1784,30 @@
         });
     </script>
 
+    <!-- Hamburger Menu Script -->
+    <script>
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-xmark');
+                } else {
+                    icon.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+            
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
