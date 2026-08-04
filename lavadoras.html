@@ -91,6 +91,7 @@
         }
         .nav-btn:hover { background: var(--primary); color: #ffffff; }
 
+        /* HERO SECTION */
         .hero-section {
             position: relative; padding: 120px 0 100px;
             background-color: #0b0f19;
@@ -103,9 +104,11 @@
 
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(0, 168, 67, 0.12); border: 1px solid rgba(0, 168, 67, 0.3);
-            color: var(--primary); padding: 8px 18px; border-radius: 50px; font-size: 13.5px; font-weight: 600; margin-bottom: 24px;
+            background: rgba(0, 168, 67, 0.16); border: 1px solid rgba(0, 168, 67, 0.4);
+            color: #ffffff; padding: 8px 18px; border-radius: 50px; font-size: 13.5px; font-weight: 600; margin-bottom: 24px;
+            backdrop-filter: blur(8px);
         }
+        .hero-badge i { color: var(--primary); }
 
         .hero-section h1 {
             font-family: var(--font-title); font-weight: 800; font-size: clamp(34px, 4.5vw, 52px);
@@ -135,6 +138,13 @@
         .bullet-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-main); font-weight: 500; }
         .bullet-item i { color: var(--primary); font-size: 16px; }
 
+        /* METRICS BAR */
+        .metrics-bar { background: #080c14; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 40px 0; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center; }
+        .metric-item h3 { font-family: var(--font-title); font-size: 36px; font-weight: 800; color: var(--primary); margin: 0 0 4px; }
+        .metric-item p { color: var(--text-muted); font-size: 14px; margin: 0; }
+
+        /* SERVIÇOS SECTION */
         .services-section { padding: 100px 0; background: #080c14; }
         .section-header { text-align: center; max-width: 680px; margin: 0 auto 60px; }
         .section-tag { color: var(--primary); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -144,21 +154,109 @@
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
         .service-card {
             background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 36px;
+            display: flex; flex-direction: column; justify-content: space-between;
             transition: var(--transition-smooth);
         }
         .service-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
         .service-icon { width: 56px; height: 56px; background: rgba(0, 168, 67, 0.12); color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 24px; }
         .service-card h3 { font-family: var(--font-title); font-size: 22px; font-weight: 700; color: #ffffff; margin: 0 0 12px; }
         .service-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.6; margin: 0 0 20px; }
-        .service-features { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border-color); pt: 20px; }
+        .service-features { list-style: none; padding: 0; margin: 0 0 28px; border-top: 1px solid var(--border-color); pt: 20px; }
         .service-features li { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 14px; margin-bottom: 10px; }
         .service-features li i { color: var(--primary); }
 
-        footer { background: #05080e; border-top: 1px solid var(--border-color); padding: 60px 0 30px; text-align: center; color: var(--text-muted); font-size: 14px; }
+        .btn-card-wa {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: rgba(0, 168, 67, 0.15); color: var(--primary); border: 1px solid rgba(0, 168, 67, 0.3);
+            padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 14.5px; text-decoration: none; transition: var(--transition-smooth);
+        }
+        .btn-card-wa:hover { background: var(--primary); color: #ffffff; }
+
+        /* BRANDS SECTION */
+        .brands-section { padding: 48px 0; background: #060910; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .brands-wrapper { display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 32px; filter: grayscale(100%) opacity(0.6); transition: var(--transition-smooth); }
+        .brands-wrapper:hover { filter: grayscale(0%) opacity(1); }
+        .brand-logo { max-height: 40px; object-fit: contain; }
+
+        /* SOBRE SECTION */
+        .about-section { padding: 100px 0; background: #0b0f19; }
+        .about-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px; align-items: center; }
+        .about-image-container { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); }
+        .about-image-container img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; }
+        .about-badge { position: absolute; top: 20px; right: 20px; background: var(--primary); color: #ffffff; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 14px; }
+        .about-content h2 { font-family: var(--font-title); font-size: 36px; font-weight: 800; color: #ffffff; margin: 8px 0 20px; }
+        .about-content p { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 20px; }
+
+        /* PROCESSO SECTION */
+        .process-section { padding: 100px 0; background: #080c14; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+        .process-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; position: relative; }
+        .process-step { font-family: var(--font-title); font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 16px; }
+        .process-card h3 { font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 10px; }
+        .process-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin: 0; }
+
+        /* DEPOIMENTOS SECTION */
+        .testimonials-section { padding: 100px 0; background: #0b0f19; }
+        .google-badge { display: inline-flex; align-items: center; gap: 16px; background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px 28px; border-radius: 16px; margin-bottom: 48px; }
+        .google-badge i { font-size: 32px; color: #4285F4; }
+        .google-badge-text h4 { font-size: 16px; font-weight: 700; color: #ffffff; margin: 0 0 2px; }
+        .google-badge-text p { font-size: 13px; color: var(--text-muted); margin: 0 0 4px; }
+        .google-badge-text a { color: var(--primary); font-size: 13px; font-weight: 600; text-decoration: none; }
+
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; }
+        .stars-container { color: var(--accent); margin-bottom: 16px; display: flex; gap: 4px; }
+        .testimonial-card p { color: #cbd5e1; font-size: 15px; line-height: 1.65; margin: 0 0 24px; font-style: italic; }
+        .testimonial-user { display: flex; align-items: center; gap: 14px; }
+        .user-avatar { width: 44px; height: 44px; background: rgba(0, 168, 67, 0.15); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; }
+        .user-info h4 { color: #ffffff; font-size: 15px; font-weight: 700; margin: 0 0 2px; }
+        .user-info span { color: var(--text-muted); font-size: 13px; }
+
+        /* FAQ SECTION */
+        .faq-section { padding: 100px 0; background: #080c14; }
+        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; }
+        .faq-question { padding: 24px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+        .faq-question h3 { font-size: 17px; font-weight: 700; color: #ffffff; margin: 0; }
+        .faq-question i { color: var(--primary); transition: transform 0.3s; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; padding: 0 24px; }
+        .faq-answer p { margin: 0; padding-bottom: 24px; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+        /* CTA URGENTE */
+        .cta-urgente {
+            padding: 90px 0;
+            background: linear-gradient(135deg, rgba(0, 168, 67, 0.15) 0%, #0b0f19 100%);
+            border-top: 1px solid rgba(0, 168, 67, 0.3); border-bottom: 1px solid rgba(0, 168, 67, 0.3);
+            color: #ffffff; text-align: center;
+        }
+        .cta-urgente-wrapper { max-width: 800px; margin: 0 auto; }
+        .cta-urgente h2 { font-family: var(--font-title); font-size: clamp(30px, 4vw, 44px); font-weight: 800; margin: 0 0 18px; color: #ffffff; }
+        .cta-urgente p { font-size: 17.5px; line-height: 1.65; margin: 0 0 36px; color: var(--text-muted); }
+        .btn-cta-urgente-wa {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            background: var(--primary); color: #ffffff !important; font-size: 17px; font-weight: 700;
+            padding: 18px 44px; border-radius: 50px; text-decoration: none !important;
+            box-shadow: 0 12px 28px -6px rgba(0, 168, 67, 0.5); transition: var(--transition-smooth);
+        }
+        .btn-cta-urgente-wa:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        /* FOOTER */
+        footer { background: #05080e; border-top: 1px solid var(--border-color); padding: 80px 0 40px; color: var(--text-muted); }
+        .footer-grid { display: grid; grid-template-columns: 1fr 0.7fr 0.7fr 0.9fr; gap: 48px; margin-bottom: 56px; }
+        .footer-about p { font-size: 14px; line-height: 1.6; margin: 20px 0 0; }
+        .footer-links h3, .footer-contact h3 { color: #ffffff; font-size: 16px; font-weight: 700; margin: 0 0 20px; }
+        .footer-links ul, .footer-contact ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: var(--transition-smooth); }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-contact li { display: flex; gap: 12px; font-size: 14px; margin-bottom: 16px; }
+        .footer-contact i { color: var(--primary); font-size: 16px; margin-top: 3px; }
+        .footer-bottom { border-top: 1px solid var(--border-color); pt: 30px; text-align: center; font-size: 13.5px; }
 
         @media (max-width: 768px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-grid { grid-template-columns: 1fr; }
             nav { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
         }
     </style>
 </head>
@@ -180,8 +278,9 @@
                     <a href="index.html">Geladeiras</a>
                     <a href="lavadoras.html" style="color: var(--primary);">Máquinas de Lavar</a>
                     <a href="bebedouros-e-purificadores.html">Bebedouros & Purificadores</a>
-                    <a href="index.html#depoimentos">Depoimentos</a>
-                    <a href="index.html#faq">Dúvidas</a>
+                    <a href="#sobre">Quem Somos</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#faq">Dúvidas</a>
                 </nav>
                 <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20conserto%20para%20minha%20M%C3%A1quina%20de%20Lavar." target="_blank" class="nav-btn">
                     Solicitar Orçamento
@@ -226,8 +325,32 @@
         </div>
     </section>
 
+    <!-- METRICS BAR -->
+    <section class="metrics-bar">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <h3>+10 mil</h3>
+                    <p>Aparelhos Consertados</p>
+                </div>
+                <div class="metric-item">
+                    <h3>35 min</h3>
+                    <p>Tempo Médio de Resposta</p>
+                </div>
+                <div class="metric-item">
+                    <h3>100%</h3>
+                    <p>Técnicos Certificados</p>
+                </div>
+                <div class="metric-item">
+                    <h3>90 dias</h3>
+                    <p>Garantia em Serviços</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVIÇOS SECTION -->
-    <section class="services-section">
+    <section class="services-section" id="servicos">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Especialidade Técnica</span>
@@ -237,46 +360,363 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-gear"></i></div>
-                    <h3>Máquinas Lava e Seca</h3>
-                    <p>Conserto completo de lavadoras front load (abertura frontal). Reparo de placa, travamento de porta, barulho na centrifugação e secagem.</p>
-                    <ul class="service-features">
-                        <li><i class="fa-solid fa-check"></i> Troca de rolamentos e vedações</li>
-                        <li><i class="fa-solid fa-check"></i> Reparo de placa controladora</li>
-                        <li><i class="fa-solid fa-check"></i> Garantia de 90 dias por escrito</li>
-                    </ul>
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-gear"></i></div>
+                        <h3>Máquinas Lava e Seca</h3>
+                        <p>Conserto completo de lavadoras front load (abertura frontal). Reparo de placa eletrônica, travamento de porta, barulho na centrifugação e falha de secagem.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Troca de rolamentos e retentores</li>
+                            <li><i class="fa-solid fa-check"></i> Reparo de placa de potência</li>
+                            <li><i class="fa-solid fa-check"></i> Desobstrução de dutos de ar</li>
+                            <li><i class="fa-solid fa-check"></i> Garantia de 90 dias por escrito</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20conserto%20para%20minha%20Lava%20e%20Seca." target="_blank" class="btn-card-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Consertar Lava e Seca
+                    </a>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-shirt"></i></div>
-                    <h3>Lavadoras Convencionais</h3>
-                    <p>Manutenção de máquinas de lavar Brastemp, Electrolux, Consul e Panasonic. Substituição de atuadores, bombas e tirantes.</p>
-                    <ul class="service-features">
-                        <li><i class="fa-solid fa-check"></i> Troca de bombas de drenagem</li>
-                        <li><i class="fa-solid fa-check"></i> Peças originais de fábrica</li>
-                        <li><i class="fa-solid fa-check"></i> Visita rápida no mesmo dia</li>
-                    </ul>
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-shirt"></i></div>
+                        <h3>Lavadoras Convencionais</h3>
+                        <p>Manutenção de máquinas de lavar Brastemp, Electrolux, Consul e Panasonic. Substituição de atuadores, bombas de drenagem, mecanismo e tirantes.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Troca de bomba de escoamento</li>
+                            <li><i class="fa-solid fa-check"></i> Substituição de tirantes e mola</li>
+                            <li><i class="fa-solid fa-check"></i> Solução de barulho na rotação</li>
+                            <li><i class="fa-solid fa-check"></i> Peças originais de fábrica</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20conserto%20para%20minha%20M%C3%A1quina%20de%20Lavar." target="_blank" class="btn-card-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Consertar Lavadora
+                    </a>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-pump-soap"></i></div>
-                    <h3>Higienização Técnica</h3>
-                    <p>Limpeza profunda para remoção de resíduos de sabão impregnados, sujeiras e fungos que mancham as roupas limpas.</p>
-                    <ul class="service-features">
-                        <li><i class="fa-solid fa-check"></i> Limpeza interna de cestos</li>
-                        <li><i class="fa-solid fa-check"></i> Desobstrução de mangueiras</li>
-                        <li><i class="fa-solid fa-check"></i> Eliminação de mau cheiro</li>
-                    </ul>
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-soap"></i></div>
+                        <h3>Higienização Técnica</h3>
+                        <p>Limpeza profunda interna para remoção de acúmulo de sabão impregnado, fiapos e fungos que provocam mau cheiro e mancham as roupas limpas.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Limpeza de cesto e tanque</li>
+                            <li><i class="fa-solid fa-check"></i> Desobstrução de mangueiras</li>
+                            <li><i class="fa-solid fa-check"></i> Eliminação de fiapos e odor</li>
+                            <li><i class="fa-solid fa-check"></i> Testes de ciclo completo</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20higieniza%C3%A7%C3%A3o%20para%20minha%20M%C3%A1quina." target="_blank" class="btn-card-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Agendar Higienização
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- BRANDS SECTION -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="brands-wrapper">
+                <img loading="lazy" src="uploads/imagens/Brastemp.webp" alt="Brastemp" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/consul-bem-pensado-vector-logo.webp" width="160" height="70" alt="Consul" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/Electrolux-Emblema.webp" width="150" height="100" alt="Electrolux" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/samsung-logo.webp" alt="Samsung" class="brand-logo">
+                <img loading="lazy" src="uploads/imagens/panasonic.webp" alt="Panasonic" class="brand-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE SECTION -->
+    <section class="about-section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image-container">
+                        <img loading="lazy" src="uploads/imagens/conserto_express_interno.webp" width="360" height="360" alt="Loja Conserto Express">
+                        <div class="about-badge">
+                            <span>+5</span> anos no mercado
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <span class="section-tag">Quem somos</span>
+                    <h2>Especialistas de Confiança em Poços de Caldas</h2>
+                    <p>A **Conserto Express** é referência em Poços de Caldas no conserto e manutenção de Máquinas de Lavar e Lava e Seca. Nossa missão é oferecer um atendimento rápido no seu próprio endereço com transparência e honestidade técnica.</p>
+                    <p>Sabemos o incômodo que é ficar com roupas acumuladas quando a máquina para. Por isso, nossos técnicos trabalham uniformizados, utilizam peças de alta qualidade e fornecem garantia por escrito de 90 dias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSO SECTION -->
+    <section class="process-section" id="processo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Praticidade</span>
+                <h2>Como Funciona Nosso Atendimento</h2>
+                <p>Do seu primeiro contato pelo WhatsApp até o conserto final no seu endereço.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-step">01</div>
+                    <h3>Agendamento</h3>
+                    <p>Você envia uma mensagem no WhatsApp e combinamos o melhor horário para a visita.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">02</div>
+                    <h3>Visita Técnica</h3>
+                    <p>Nosso técnico vai até sua residência, examina a máquina e identifica o defeito.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">03</div>
+                    <h3>Orçamento</h3>
+                    <p>Apresentamos o orçamento na hora com transparência e sem taxas escondidas.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-step">04</div>
+                    <h3>Conserto no Local</h3>
+                    <p>Com o orçamento aprovado, realizamos o reparo no local e entregamos a garantia por escrito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS SECTION -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2>Quem Já Contratou, Recomenda</h2>
+                <p>Veja o que nossos clientes de Poços de Caldas dizem sobre o nosso trabalho.</p>
+            </div>
+            
+            <div class="google-badge">
+                <i class="fa-brands fa-google"></i>
+                <div class="google-badge-text">
+                    <h4>Avaliado em 5.0 / 5.0</h4>
+                    <p>Nota máxima baseada em avaliações de clientes no Google.</p>
+                    <a href="https://share.google/f8xDy2d9012VfHSWG" target="_blank">Ver avaliações no Google <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Minha máquina de lavar Electrolux parou de centrifugar de repente. Chamei a Conserto Express no WhatsApp e no mesmo dia o técnico veio em casa, trocou a peça e ficou perfeita! Recomendo muito!"</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">MS</div>
+                        <div class="user-info">
+                            <h4>Mariana Souza</h4>
+                            <span>Poços de Caldas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Atendimento excelente! O técnico foi super educado, vestindo o uniforme da empresa, identificou na hora o problema de barulho na Lava e Seca Samsung e fez o conserto com garantia por escrito."</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">CH</div>
+                        <div class="user-info">
+                            <h4>Carlos Henrique</h4>
+                            <span>Vila Nova</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars-container">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Preço justo, rapidez e honestidade. Consertaram a placa da minha lavadora Brastemp no próprio local sem enrolação. Empresa nota 10 aqui em Poços!"</p>
+                    </div>
+                    <div class="testimonial-user">
+                        <div class="user-avatar">JR</div>
+                        <div class="user-info">
+                            <h4>José Roberto</h4>
+                            <span>Centro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dúvidas Frequentes</span>
+                <h2>Perguntas Respondidas sobre Lavadoras</h2>
+                <p>Tire suas dúvidas sobre o conserto da sua máquina de lavar.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>O conserto da máquina de lavar é feito na minha casa?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Na maioria dos casos, o reparo é concluído no próprio local em seu endereço em Poços de Caldas. Nossos técnicos levam as ferramentas e peças principais no veículo para resolver no mesmo dia.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Vocês atendem quais marcas de lavadoras?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Atendemos todas as principais marcas do mercado: Brastemp, Electrolux, Consul, Samsung, LG, Panasonic e Midea, tanto em modelos de abertura superior quanto abertura frontal (Lava e Seca).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Qual é o prazo da garantia do conserto?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Todos os nossos serviços de manutenção em máquinas de lavar acompanham garantia de 90 dias por escrito, cobrindo tanto as peças novas trocadas quanto a mão de obra.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quais as formas de pagamento aceitas?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos Pix, cartão de débito, cartão de crédito (com opção de parcelamento) e dinheiro. O pagamento só é realizado após a conclusão e teste do serviço.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA URGENTE -->
+    <section class="cta-urgente">
+        <div class="container">
+            <div class="cta-urgente-wrapper">
+                <h2>Sua Máquina de Lavar Precisa de Conserto?</h2>
+                <p>Nossos técnicos estão prontos em Poços de Caldas para atender o seu chamado. Agende sua visita técnica com garantia de 90 dias por escrito.</p>
+                <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20conserto%20para%20minha%20M%C3%A1quina%20de%20Lavar." target="_blank" class="btn-cta-urgente-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Falar com um Técnico Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p><strong>Conserto Express Poços de Caldas</strong> — Rua Coronel Virgílio Silva, 1374 (Em frente ao Supermercado BH) • Poços de Caldas - MG</p>
-            <p style="margin-top: 8px;">Telefone: (35) 2039-0020 | WhatsApp: (35) 99958-7581</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span>Conserto<span>Express</span></span>
+                    </a>
+                    <p>Assistência técnica especializada de confiança em Poços de Caldas. Honestidade e rapidez no atendimento.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="index.html">Geladeiras</a></li>
+                        <li><a href="lavadoras.html">Máquinas de Lavar</a></li>
+                        <li><a href="bebedouros-e-purificadores.html">Bebedouros & Purificadores</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#faq">Dúvidas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="index.html">Conserto de Geladeiras</a></li>
+                        <li><a href="lavadoras.html">Conserto de Lavadoras</a></li>
+                        <li><a href="lavadoras.html">Lava e Seca</a></li>
+                        <li><a href="bebedouros-e-purificadores.html">Bebedouros & Purificadores</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Endereço:</strong>
+                                <a href="https://share.google/f8xDy2d9012VfHSWG" target="_blank" style="color: var(--text-muted); text-decoration: none; transition: var(--transition-smooth);">R. Cel. Virgílio Silva - Vila Nova, Poços de Caldas - MG, 37701-642</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Telefone:</strong>
+                                <a href="tel:+553520390020">(35) 2039-0020</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp:</strong>
+                                <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20preciso%20de%20conserto%20para%20minha%20M%C3%A1quina%20de%20Lavar." target="_blank">(35) 9 9958-7581</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Conserto Express. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Script de Accordion do FAQ -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+                    document.querySelectorAll('.faq-question i').forEach(ic => ic.classList.replace('fa-minus', 'fa-plus'));
+                    
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

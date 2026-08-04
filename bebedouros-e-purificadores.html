@@ -173,14 +173,19 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(14, 165, 233, 0.1);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            color: var(--secondary);
+            background: rgba(0, 168, 67, 0.16);
+            border: 1px solid rgba(0, 168, 67, 0.4);
+            color: #ffffff;
             padding: 8px 18px;
             border-radius: 50px;
             font-size: 13.5px;
             font-weight: 600;
             margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-badge i {
+            color: var(--primary);
         }
 
         .hero-section h1 {
@@ -664,16 +669,63 @@
             font-weight: 300;
         }
 
-                /* ------------------ CTA URGENTE (DESIGNER MATCH: DARK SOLID GREEN) ------------------ */
+                /* ------------------ CTA URGENTE ------------------ */
         .cta-urgente {
             padding: 90px 0;
-            background: #09261d;
-            border-top: 1px solid rgba(16, 185, 129, 0.2);
-            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, rgba(0, 168, 67, 0.15) 0%, #0b0f19 100%);
+            border-top: 1px solid rgba(0, 168, 67, 0.3);
+            border-bottom: 1px solid rgba(0, 168, 67, 0.3);
             color: #ffffff;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .cta-urgente-wrapper {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-urgente h2 {
+            font-family: var(--font-title);
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 800;
+            margin: 0 0 18px;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+
+        .cta-urgente p {
+            font-size: 17.5px;
+            line-height: 1.65;
+            margin: 0 0 36px;
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        .btn-cta-urgente-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--primary);
+            color: #ffffff !important;
+            font-size: 17px;
+            font-weight: 700;
+            padding: 18px 44px;
+            border-radius: 50px;
+            text-decoration: none !important;
+            box-shadow: 0 12px 28px -6px rgba(0, 168, 67, 0.5);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-cta-urgente-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -4px rgba(0, 168, 67, 0.6);
+            background: var(--primary-hover);
+            color: #ffffff !important;
         }
 
 /* ------------------ FOOTER ------------------ */
