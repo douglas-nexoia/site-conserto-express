@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TNBKDRH2');</script>
-    <!-- End Google Tag Manager -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conserto de Máquinas de Lavar e Lava e Seca em Poços de Caldas | Conserto Express</title>
@@ -90,6 +82,16 @@
             transition: var(--transition-smooth);
         }
         .nav-btn:hover { background: var(--primary); color: #ffffff; }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
 
         /* HERO SECTION */
         .hero-section {
@@ -256,11 +258,44 @@
         .footer-bottom { border-top: 1px solid var(--border-color); pt: 30px; text-align: center; font-size: 13.5px; }
 
         @media (max-width: 768px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            nav { display: none; }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            nav {
+                position: absolute; top: 80px; left: 0; width: 100%;
+                background: rgba(9, 13, 22, 0.98); backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border-color); flex-direction: column;
+                padding: 24px; gap: 20px; box-sizing: border-box; display: none !important; z-index: 99;
+            }
+            nav.active { display: flex !important; }
+            .nav-wrapper { flex-direction: row !important; height: 80px; align-items: center; justify-content: space-between; position: relative; }
+            .nav-wrapper > .nav-btn { display: none !important; }
+            nav .nav-btn-mobile {
+                display: block !important; background: var(--primary); color: #ffffff !important;
+                text-align: center; padding: 12px; border-radius: 50px; font-weight: 600; text-decoration: none; margin-top: 10px;
+            }
+            .testimonials-grid, .process-grid {
+                display: flex !important; overflow-x: auto !important; scroll-snap-type: x mandatory !important;
+                gap: 16px !important; padding-bottom: 20px !important; margin-left: -24px !important; margin-right: -24px !important;
+                padding-left: 24px !important; padding-right: 24px !important; -webkit-overflow-scrolling: touch;
+            }
+            .testimonial-card { flex: 0 0 85% !important; scroll-snap-align: center !important; }
+            .process-card { flex: 0 0 78% !important; scroll-snap-align: center !important; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
         }
     </style>
+
+    <!-- Google Tag Manager -->
+    <script>
+      window.addEventListener('load', function() {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TNBKDRH2');
+      });
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -283,9 +318,13 @@
                     <a href="#sobre">Quem Somos</a>
                     <a href="#depoimentos">Depoimentos</a>
                     <a href="#faq">Dúvidas</a>
+                    <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="nav-btn-mobile" style="display: none;">Agendar Visita</a>
                 </nav>
+                <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <a href="https://api.whatsapp.com/send?phone=5535999587581&text=Ol%C3%A1%21%20Vim%20pelo%20site%2C%20gostaria%20de%20um%20atendimento." target="_blank" class="nav-btn">
-                    Solicitar Orçamento
+                    Agendar Visita
                 </a>
             </div>
         </div>
@@ -719,6 +758,32 @@
                 }
             });
         });
+    </script>
+
+    <!-- Hamburger Menu Script -->
+    <script>
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-xmark');
+                } else {
+                    icon.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+            
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+        }
     </script>
 </body>
 </html>
