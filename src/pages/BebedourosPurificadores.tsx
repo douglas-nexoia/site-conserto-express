@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
+import DefectsCarousel, { DefectItem } from "@/components/DefectsCarousel";
 import HowItWorks from "@/components/HowItWorks";
 import Guarantee from "@/components/Guarantee";
 import StoreLocation from "@/components/StoreLocation";
@@ -11,33 +12,36 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { Droplets, Sparkles, ShieldCheck, Wrench, ArrowRight } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { Droplets, Sparkles, ShieldCheck, Wrench } from "lucide-react";
 
-const purifierProblems = [
+const purifierProblems: DefectItem[] = [
   {
     icon: Droplets,
     title: "Água não gela ou termostato desregulado",
     desc: "Problema no compressor, falta de gás refrigerante ou termostato de controle térmico inoperante. Diagnóstico rápido para você voltar a ter água gelada.",
     tags: ["Termostato", "Compressor", "Carga de Gás"],
+    whatsappRef: "Olá! Meu purificador/bebedouro não está gelando a água (Ref: #purificador-pocos)",
   },
   {
     icon: Sparkles,
     title: "Troca de Refil / Filtro & Higienização Interna",
     desc: "Substituição do elemento filtrante por refil original e sanitização do reservatório com bactericida para eliminar gosto de cloro e impurezas.",
     tags: ["Refil Original", "Anti-Cloro", "Higienização"],
+    whatsappRef: "Olá! Preciso de troca de refil e higienização no meu purificador (Ref: #purificador-pocos)",
   },
   {
     icon: Wrench,
     title: "Pingando na torneira ou vazamento pela base",
     desc: "Válvula solenoide travada, conexões de engate rápido com folga ou torneira ressecada. Reparo com substituição de componentes vedantes.",
     tags: ["Torneira", "Engate Rápido", "Sem Vazamento"],
+    whatsappRef: "Olá! Meu purificador está com vazamento ou pingando na torneira (Ref: #purificador-pocos)",
   },
   {
     icon: ShieldCheck,
     title: "Bebedouros Industriais & Comerciais",
     desc: "Manutenção de bebedouros de pressão, bebedouros de coluna e industriais de 25L, 50L e 100L para empresas, academias e comércios.",
     tags: ["Bebedouro Industrial", "Pressão", "Empresas & Academias"],
+    whatsappRef: "Olá! Preciso de manutenção em bebedouro industrial/comercial (Ref: #purificador-pocos)",
   },
 ];
 
@@ -95,66 +99,14 @@ const BebedourosPurificadores = () => {
 
           <Brands />
 
-          {/* Sintomas de Bebedouros */}
-          <section className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">
-            <div className="container-max">
-              <div className="max-w-[640px] mb-12">
-                <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#00A843] mb-3">
-                  01 — Problemas Frequentes
-                </div>
-                <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-[44px] leading-[1.05] tracking-[-0.03em] mb-4">
-                  Como está funcionando seu purificador?
-                </h2>
-                <p className="font-sans text-base text-[#68737E]">
-                  Garantimos água pura, cristalina e gelada para a sua família ou empresa.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {purifierProblems.map((p, idx) => {
-                  const Icon = p.icon;
-                  const waRefUrl = `https://wa.me/5535999587801?text=${encodeURIComponent(`Olá! Meu purificador/bebedouro está com o seguinte defeito: ${p.title} (Ref: #purificador-pocos)`)}`;
-
-                  return (
-                    <div
-                      key={idx}
-                      className="bg-white border border-[#E4E2DD] rounded-md p-6 sm:p-7 flex flex-col justify-between hover:border-[#14212E] transition-colors"
-                    >
-                      <div>
-                        <div className="w-10 h-10 rounded-md bg-[#F2F0EC] flex items-center justify-center text-[#00A843] mb-4">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <h3 className="font-heading font-bold text-xl text-[#14212E] mb-2.5">
-                          {p.title}
-                        </h3>
-                        <p className="font-sans text-sm text-[#68737E] leading-relaxed mb-4">
-                          {p.desc}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {p.tags.map((t, i) => (
-                            <span key={i} className="font-sans text-xs text-[#5A646E] bg-[#F2F0EC] rounded px-2.5 py-1">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <a
-                        href={waRefUrl}
-                        onClick={() => trackWhatsAppConversion(`purifier_problem_${idx}`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-sans font-semibold text-sm text-[#00A843] hover:text-[#008F39] pt-4 border-t border-[#E4E2DD]"
-                      >
-                        <span>Solicitar conserto no WhatsApp</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
+          {/* Carrossel Dinâmico de Defeitos de Bebedouros */}
+          <DefectsCarousel
+            kicker="01 — Problemas Frequentes"
+            title="Como está funcionando seu purificador?"
+            subtitle="Garantimos água pura, cristalina e gelada para a sua família ou empresa."
+            items={purifierProblems}
+            conversionPrefix="purifier_problem"
+          />
 
           <HowItWorks />
           <Guarantee />
