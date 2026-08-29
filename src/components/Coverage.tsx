@@ -32,7 +32,7 @@ const Coverage = () => {
               Atendemos todos os bairros de Poços de Caldas
             </h2>
             <p className="font-sans text-base sm:text-[16.5px] text-white/60 leading-relaxed mb-8 max-w-[480px]">
-              Técnicos em rota constante pelas regiões urbana e comercial de Poços de Caldas para garantir agilidade no atendimento domiciliar.
+              Técnicos em rota constante por todas as regiões e bairros de Poços de Caldas para garantir agilidade no atendimento domiciliar.
             </p>
 
             {/* Chips */}

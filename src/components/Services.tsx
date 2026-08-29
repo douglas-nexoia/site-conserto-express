@@ -4,12 +4,12 @@ import { trackWhatsAppConversion } from "@/lib/tracking";
 const services = [
   {
     id: "geladeiras",
-    kicker: "01 — Refrigeração Doméstica & Comercial",
+    kicker: "01 — Refrigeração Doméstica & Residencial",
     title: "Conserto de Geladeiras & Freezers",
     route: "/",
     whatsappRef: "Olá, preciso de conserto na minha geladeira (Ref: #geladeira-pocos)",
     icon: Refrigerator,
-    slotText: "frost free · duplex · side by side · comercial",
+    slotText: "frost free · duplex · side by side · inverse",
     desc: "Não gela, congela alimentos embaixo, não liga ou apresenta vazamento de gás. Diagnóstico preciso no seu endereço com peças originais e 90 dias de garantia.",
     tags: ["Frost Free", "Carga de Gás", "Troca de Motor", "Sensor & Degelo"],
   },

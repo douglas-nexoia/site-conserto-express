@@ -8,7 +8,7 @@ const brands = [
   "IBBL",
   "Latina",
   "Esmaltec",
-  "Metalfrio",
+  "Midea",
 ];
 
 const Brands = () => {
