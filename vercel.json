@@ -1,8 +1,44 @@
 {
-  "cleanUrls": true,
   "rewrites": [
-    { "source": "/lavadoras", "destination": "/lavadoras.html" },
-    { "source": "/bebedouros-e-purificadores", "destination": "/bebedouros-e-purificadores.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/lavadoras",
+      "destination": "/lavadoras.html"
+    },
+    {
+      "source": "/lavadoras/",
+      "destination": "/lavadoras.html"
+    },
+    {
+      "source": "/lavadora",
+      "destination": "/lavadoras.html"
+    },
+    {
+      "source": "/lavadora/",
+      "destination": "/lavadoras.html"
+    },
+    {
+      "source": "/bebedouros-e-purificadores",
+      "destination": "/bebedouros-e-purificadores.html"
+    },
+    {
+      "source": "/bebedouros-e-purificadores/",
+      "destination": "/bebedouros-e-purificadores.html"
+    },
+    {
+      "source": "/bebedouros",
+      "destination": "/bebedouros-e-purificadores.html"
+    },
+    {
+      "source": "/purificadores",
+      "destination": "/bebedouros-e-purificadores.html"
+    },
+    {
+      "source": "/conserto-geladeira",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/geladeiras",
+      "destination": "/index.html"
+    }
   ]
 }
