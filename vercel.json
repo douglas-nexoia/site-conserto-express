@@ -1,28 +1,8 @@
 {
+  "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/bebedouros-e-purificadores",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/bebedouros-e-purificadores/",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/lavadoras",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadoras/",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadora",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadora/",
-      "destination": "/lavadoras.html"
-    }
+    { "source": "/lavadoras", "destination": "/lavadoras.html" },
+    { "source": "/bebedouros-e-purificadores", "destination": "/bebedouros-e-purificadores.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
