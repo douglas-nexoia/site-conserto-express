@@ -24,8 +24,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Public Sans", "Inter", "sans-serif"],
-        heading: ["Plus Jakarta Sans", "Archivo", "sans-serif"],
+        sans: ["Public Sans", "sans-serif"],
+        heading: ["Archivo", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
     },
