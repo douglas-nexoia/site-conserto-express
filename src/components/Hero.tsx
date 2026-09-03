@@ -22,9 +22,9 @@ const Hero = ({
 
   return (
     <section className="relative min-h-[600px] lg:min-h-[660px] flex items-center bg-[#0A141E] overflow-hidden">
-      {/* 1. Real Store Facade Background Image with background-size: cover & calibrated background-position */}
+      {/* 1. Real Store Facade Background Image - Desktop Only */}
       <div
-        className="absolute inset-0 z-0 bg-no-repeat transition-all duration-300"
+        className="absolute inset-0 z-0 bg-no-repeat transition-all duration-300 hidden lg:block"
         style={{
           backgroundImage: `url(${facadeImage})`,
           backgroundSize: "cover",
@@ -32,19 +32,11 @@ const Hero = ({
         }}
       />
 
-      {/* 2. Canonical Gradient Overlay: Hides adjacent building on the left behind solid dark panel and illuminates facade on the right */}
+      {/* 2. Canonical Gradient Overlay - Desktop Only */}
       <div 
         className="absolute inset-0 z-0 hidden lg:block"
         style={{
           background: "linear-gradient(90deg, #0A141E 0%, #0A141E 48%, rgba(10, 20, 30, 0.88) 64%, rgba(10, 20, 30, 0.2) 100%)",
-        }}
-      />
-
-      {/* Mobile & Tablet Gradient Overlay */}
-      <div 
-        className="absolute inset-0 z-0 lg:hidden"
-        style={{
-          background: "linear-gradient(180deg, rgba(10, 20, 30, 0.94) 0%, rgba(10, 20, 30, 0.88) 60%, rgba(10, 20, 30, 0.96) 100%)",
         }}
       />
 
@@ -116,6 +108,15 @@ const Hero = ({
                 Em domicílio
               </div>
               <div className="font-sans text-xs text-white/60 mt-1">técnicos em rota diária</div>
+            </div>
+          </div>
+
+          {/* Card nítido da loja no mobile */}
+          <div className="lg:hidden mt-8 rounded-lg overflow-hidden border border-white/15 shadow-md relative">
+            <img src={facadeImage} alt="Loja física Conserto Express na Cel. Virgílio Silva" className="w-full h-48 object-cover" />
+            <div className="absolute bottom-0 inset-x-0 bg-black/75 backdrop-blur-sm px-3.5 py-2 text-xs text-white flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00A843]"></span>
+              <span className="font-sans font-medium">Sede própria na R. Cel. Virgílio Silva, 1374 — Poços de Caldas</span>
             </div>
           </div>
         </div>

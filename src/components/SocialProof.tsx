@@ -65,8 +65,8 @@ const SocialProof = () => {
                 <Star key={i} className="w-4 h-4 fill-[#F59E0B]" />
               ))}
             </div>
-            <span className="font-heading font-bold text-sm text-[#14212E]">4.8 / 5.0</span>
-            <span className="font-sans text-xs text-[#68737E]">no Google</span>
+            <span className="font-heading font-bold text-sm text-[#14212E]">5.0 / 5.0</span>
+            <span className="font-sans text-xs text-[#68737E]">no Google (Mais de 320 avaliações)</span>
           </div>
         </div>
 
