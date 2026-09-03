@@ -18,7 +18,7 @@ const Hero = ({
   whatsappMessage,
   bgPosition = "18% center",
 }: HeroProps) => {
-  const whatsappUrl = `https://wa.me/5535999587801?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section className="relative min-h-[600px] lg:min-h-[660px] flex items-center bg-[#0A141E] overflow-hidden">
@@ -116,7 +116,7 @@ const Hero = ({
             <img src={facadeImage} alt="Loja física Conserto Express na Cel. Virgílio Silva" className="w-full h-48 object-cover" />
             <div className="absolute bottom-0 inset-x-0 bg-black/75 backdrop-blur-sm px-3.5 py-2 text-xs text-white flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00A843]"></span>
-              <span className="font-sans font-medium">Sede própria na R. Cel. Virgílio Silva, 1374 — Poços de Caldas</span>
+              <span className="font-sans font-medium">Assistência Técnica, Peças & Seminovos na R. Cel. Virgílio Silva, 1374</span>
             </div>
           </div>
         </div>

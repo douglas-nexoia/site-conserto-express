@@ -59,7 +59,7 @@ const Services = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((s) => {
-            const waUrl = `https://wa.me/5535999587801?text=${encodeURIComponent(s.whatsappRef)}`;
+            const waUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(s.whatsappRef)}`;
             const Icon = s.icon;
 
             return (

@@ -15,10 +15,10 @@ const Contact = ({
     e.preventDefault();
     trackWhatsAppConversion("form_submit");
     const msg = `Olá! Meu nome é ${name || "Cliente"} (${phone || "Não informado"}) e gostaria de um atendimento para meu eletrodoméstico em Poços de Caldas.`;
-    window.open(`https://wa.me/5535999587801?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/5535999587581?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  const directWhatsAppUrl = `https://wa.me/5535999587801?text=${encodeURIComponent(whatsappMessage)}`;
+  const directWhatsAppUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section id="contato" className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">

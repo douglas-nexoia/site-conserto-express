@@ -8,7 +8,7 @@ interface WhatsAppFloatProps {
 const WhatsAppFloat = ({
   whatsappMessage = "Olá! Vim pelo site da Conserto Express e gostaria de solicitar um atendimento em Poços de Caldas.",
 }: WhatsAppFloatProps) => {
-  const whatsappUrl = `https://wa.me/5535999587801?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <aside aria-label="Atendimento via WhatsApp" className="fixed bottom-6 right-6 z-50">

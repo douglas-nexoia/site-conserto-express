@@ -71,7 +71,7 @@ const Footer = () => {
                 (35) 2039-0020
               </a>
               <div className="font-mono text-xs text-white/50">
-                WhatsApp: (35) 99958-7801
+                WhatsApp: (35) 99958-7581
               </div>
               <div className="text-xs text-white/50 pt-1">
                 Atendimento em domicílio em todos os bairros

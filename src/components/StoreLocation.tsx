@@ -3,7 +3,7 @@ import internalPhoto from "@/assets/conserto_express_interno.webp";
 import { trackWhatsAppConversion, trackPhoneConversion } from "@/lib/tracking";
 
 const StoreLocation = () => {
-  const whatsappUrl = `https://wa.me/5535999587801?text=${encodeURIComponent("Olá! Gostaria de visitar a loja da Conserto Express na Cel. Virgílio Silva.")}`;
+  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent("Olá! Gostaria de visitar a loja da Conserto Express na Cel. Virgílio Silva.")}`;
 
   return (
     <section className="bg-[#07111D] text-white py-16 sm:py-24 border-t border-white/10">
@@ -18,7 +18,7 @@ const StoreLocation = () => {
               Venha tomar um café ou chame nosso técnico em domicílio
             </h2>
             <p className="font-sans text-base text-white/70 leading-relaxed mb-8">
-              A Conserto Express conta com sede própria e oficina técnica completa em Poços de Caldas para receber você ou despachar nossos técnicos para o seu endereço.
+              A Conserto Express conta com loja física, balcão de peças, venda de seminovos e oficina técnica completa em Poços de Caldas para receber você ou despachar nossos técnicos para o seu endereço.
             </p>
 
             <div className="space-y-4 mb-8">
