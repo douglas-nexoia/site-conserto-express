@@ -65,7 +65,7 @@ const washerFaqs = [
 ];
 
 const Lavadoras = () => {
-  const WHATSAPP_LAVADORA = "Olá, preciso de conserto na minha máquina de lavar (Ref: #lavadora-pocos)";
+  const WHATSAPP_LAVADORA = "Olá! Vim pelo site, gostaria de um atendimento.";
 
   return (
     <>

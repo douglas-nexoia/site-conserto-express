@@ -1,4 +1,4 @@
-import { trackWhatsAppConversion, trackPhoneConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 import facadeImage from "@/assets/conserto_express_fachada_hq.webp";
 
 interface HeroProps {
@@ -6,7 +6,7 @@ interface HeroProps {
   badgeCredential?: string;
   title: React.ReactNode;
   description: string;
-  whatsappMessage: string;
+  whatsappMessage?: string;
   bgPosition?: string;
 }
 
@@ -15,10 +15,9 @@ const Hero = ({
   badgeCredential = "Loja Física na R. Cel. Virgílio Silva, 1374",
   title,
   description,
-  whatsappMessage,
   bgPosition = "18% center",
 }: HeroProps) => {
-  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section className="relative min-h-[600px] lg:min-h-[660px] flex items-center bg-[#0A141E] overflow-hidden">

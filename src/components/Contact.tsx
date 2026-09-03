@@ -1,24 +1,21 @@
 import { useState } from "react";
-import { trackWhatsAppConversion, trackPhoneConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 interface ContactProps {
   whatsappMessage?: string;
 }
 
-const Contact = ({
-  whatsappMessage = "Olá! Vim pelo site da Conserto Express e gostaria de solicitar um atendimento em Poços de Caldas.",
-}: ContactProps) => {
+const Contact = ({}: ContactProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     trackWhatsAppConversion("form_submit");
-    const msg = `Olá! Meu nome é ${name || "Cliente"} (${phone || "Não informado"}) e gostaria de um atendimento para meu eletrodoméstico em Poços de Caldas.`;
-    window.open(`https://wa.me/5535999587581?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(OFFICIAL_WHATSAPP_LINK, "_blank");
   };
 
-  const directWhatsAppUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
+  const directWhatsAppUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section id="contato" className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">

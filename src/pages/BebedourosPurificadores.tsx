@@ -65,7 +65,7 @@ const purifierFaqs = [
 ];
 
 const BebedourosPurificadores = () => {
-  const WHATSAPP_PURIFICADOR = "Olá, gostaria de orçamento para conserto de purificador/bebedouro (Ref: #purificador-pocos)";
+  const WHATSAPP_PURIFICADOR = "Olá! Vim pelo site, gostaria de um atendimento.";
 
   return (
     <>

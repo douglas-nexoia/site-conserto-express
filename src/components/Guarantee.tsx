@@ -1,8 +1,8 @@
 import { ShieldCheck, MapPin, Wrench } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 const Guarantee = () => {
-  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent("Olá! Quero confirmar a garantia e agendar a visita da Conserto Express.")}`;
+  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">

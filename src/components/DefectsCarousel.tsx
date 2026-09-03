@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 export interface DefectItem {
   icon: LucideIcon;
@@ -88,7 +88,7 @@ const DefectsCarousel = ({
               const itemIndex = (currentSlide + offset) % items.length;
               const item = items[itemIndex];
               const Icon = item.icon;
-              const waUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(item.whatsappRef)}`;
+              const waUrl = OFFICIAL_WHATSAPP_LINK;
 
               return (
                 <div
@@ -144,7 +144,7 @@ const DefectsCarousel = ({
             {(() => {
               const item = items[currentSlide];
               const Icon = item.icon;
-              const waUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(item.whatsappRef)}`;
+              const waUrl = OFFICIAL_WHATSAPP_LINK;
 
               return (
                 <div className="bg-white border border-[#E4E2DD] rounded-xl p-6 flex flex-col justify-between shadow-md min-h-[320px] transition-all duration-300">

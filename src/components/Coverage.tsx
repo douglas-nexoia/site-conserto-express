@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 const bairros = [
   "Centro",
@@ -17,7 +17,7 @@ const bairros = [
 ];
 
 const Coverage = () => {
-  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent("Olá! Gostaria de saber se vocês atendem no meu bairro em Poços de Caldas.")}`;
+  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section id="onde" className="bg-[#0A141E] text-white py-16 sm:py-24 border-t border-white/10">

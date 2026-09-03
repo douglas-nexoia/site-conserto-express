@@ -1,14 +1,12 @@
 import { MessageCircle } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 interface WhatsAppFloatProps {
   whatsappMessage?: string;
 }
 
-const WhatsAppFloat = ({
-  whatsappMessage = "Olá! Vim pelo site da Conserto Express e gostaria de solicitar um atendimento em Poços de Caldas.",
-}: WhatsAppFloatProps) => {
-  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(whatsappMessage)}`;
+const WhatsAppFloat = ({}: WhatsAppFloatProps) => {
+  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <aside aria-label="Atendimento via WhatsApp" className="fixed bottom-6 right-6 z-50">

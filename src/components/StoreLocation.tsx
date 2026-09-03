@@ -1,9 +1,9 @@
 import { MapPin, Clock, Phone } from "lucide-react";
 import internalPhoto from "@/assets/conserto_express_interno.webp";
-import { trackWhatsAppConversion, trackPhoneConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 const StoreLocation = () => {
-  const whatsappUrl = `https://wa.me/5535999587581?text=${encodeURIComponent("Olá! Gostaria de visitar a loja da Conserto Express na Cel. Virgílio Silva.")}`;
+  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section className="bg-[#07111D] text-white py-16 sm:py-24 border-t border-white/10">

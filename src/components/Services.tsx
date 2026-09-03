@@ -1,5 +1,5 @@
 import { ArrowRight, Refrigerator, Disc3, Droplets } from "lucide-react";
-import { trackWhatsAppConversion } from "@/lib/tracking";
+import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
 
 const services = [
   {
@@ -59,7 +59,7 @@ const Services = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((s) => {
-            const waUrl = `https://wa.me/5535999587581?text=${encodeURIComponent(s.whatsappRef)}`;
+            const waUrl = OFFICIAL_WHATSAPP_LINK;
             const Icon = s.icon;
 
             return (

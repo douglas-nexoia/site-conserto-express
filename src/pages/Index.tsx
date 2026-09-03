@@ -47,7 +47,7 @@ const fridgeProblems: DefectItem[] = [
 ];
 
 const Index = () => {
-  const WHATSAPP_GELADEIRA = "Olá, preciso de conserto na minha geladeira (Ref: #geladeira-pocos)";
+  const WHATSAPP_GELADEIRA = "Olá! Vim pelo site, gostaria de um atendimento.";
 
   return (
     <>
