@@ -1,5 +1,5 @@
 import { ArrowRight, Refrigerator, Disc3, Droplets } from "lucide-react";
-import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
 const services = [
   {
@@ -59,7 +59,8 @@ const Services = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((s) => {
-            const waUrl = OFFICIAL_WHATSAPP_LINK;
+            const serviceKey: ServiceType = s.id === "geladeiras" ? "geladeira" : s.id === "lavadoras" ? "lavadora" : s.id === "bebedouros" ? "bebedouro" : "home";
+            const waUrl = getWhatsAppUrl(serviceKey);
             const Icon = s.icon;
 
             return (
@@ -85,7 +86,7 @@ const Services = () => {
                 {/* Card Content */}
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#9AA2AC] mb-2">
+                    <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#68737E] mb-2">
                       {s.kicker}
                     </div>
                     <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#14212E] tracking-tight mb-3">
@@ -96,11 +97,11 @@ const Services = () => {
                     </p>
 
                     {/* Chips */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-6">
                       {s.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="font-sans text-xs text-[#5A646E] bg-[#F2F0EC] rounded px-2.5 py-1"
+                          className="font-sans text-xs text-[#14212E] bg-[#EDEBE6] rounded px-2.5 py-1 font-medium"
                         >
                           {tag}
                         </span>
@@ -112,7 +113,10 @@ const Services = () => {
                   <div className="pt-4 border-t border-[#E4E2DD] flex items-center justify-between">
                     <a
                       href={waUrl}
-                      onClick={() => trackWhatsAppConversion(`services_${s.id}`)}
+                      onClick={(e) => {
+                        e.currentTarget.href = getWhatsAppUrl(serviceKey);
+                        trackWhatsAppConversion(`services_${s.id}`);
+                      }}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-sans font-semibold text-sm sm:text-[15px] text-[#00A843] hover:text-[#008F39] inline-flex items-center gap-1.5 transition-colors"

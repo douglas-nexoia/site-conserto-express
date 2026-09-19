@@ -79,7 +79,7 @@ const Lavadoras = () => {
       </Helmet>
 
       <div className="min-h-screen bg-[#0A141E] text-white">
-        <Header currentRoute="/lavadoras" whatsappMessage={WHATSAPP_LAVADORA} />
+        <Header currentRoute="/lavadoras" whatsappMessage={WHATSAPP_LAVADORA} service="lavadora" />
 
         <main>
           {/* Hero Section */}
@@ -95,6 +95,7 @@ const Lavadoras = () => {
             description="Não centrifuga, não drena a água ou faz barulho excessivo? Atendimento ágil no seu endereço com peças originais, oficina própria e 90 dias de garantia por escrito."
             whatsappMessage={WHATSAPP_LAVADORA}
             bgPosition="18% center"
+            service="lavadora"
           />
 
           <Brands />
@@ -106,19 +107,20 @@ const Lavadoras = () => {
             subtitle="Trabalhamos com diagnósticos precisos para evitar trocas desnecessárias de peças."
             items={washerProblems}
             conversionPrefix="washer_problem"
+            service="lavadora"
           />
 
           <HowItWorks />
-          <Guarantee />
-          <StoreLocation />
-          <Coverage />
+          <Guarantee service="lavadora" />
+          <StoreLocation service="lavadora" />
+          <Coverage service="lavadora" />
           <SocialProof />
           <FAQ customFaqs={washerFaqs} />
-          <Contact whatsappMessage={WHATSAPP_LAVADORA} />
+          <Contact whatsappMessage={WHATSAPP_LAVADORA} service="lavadora" />
         </main>
 
         <Footer />
-        <WhatsAppFloat whatsappMessage={WHATSAPP_LAVADORA} />
+        <WhatsAppFloat whatsappMessage={WHATSAPP_LAVADORA} service="lavadora" />
       </div>
     </>
   );

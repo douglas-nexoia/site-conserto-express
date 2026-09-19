@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
-import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
 export interface DefectItem {
   icon: LucideIcon;
@@ -16,6 +16,7 @@ interface DefectsCarouselProps {
   subtitle?: string;
   items: DefectItem[];
   conversionPrefix?: string;
+  service?: ServiceType;
 }
 
 const DefectsCarousel = ({
@@ -24,6 +25,7 @@ const DefectsCarousel = ({
   subtitle = "Trabalhamos com equipamentos de precisão para identificar o componente com falha na primeira visita.",
   items,
   conversionPrefix = "defect",
+  service = "home",
 }: DefectsCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -88,7 +90,7 @@ const DefectsCarousel = ({
               const itemIndex = (currentSlide + offset) % items.length;
               const item = items[itemIndex];
               const Icon = item.icon;
-              const waUrl = OFFICIAL_WHATSAPP_LINK;
+              const waUrl = getWhatsAppUrl(service, item.whatsappRef);
 
               return (
                 <div
@@ -126,7 +128,10 @@ const DefectsCarousel = ({
 
                   <a
                     href={waUrl}
-                    onClick={() => trackWhatsAppConversion(`${conversionPrefix}_${itemIndex}`)}
+                    onClick={(e) => {
+                      e.currentTarget.href = getWhatsAppUrl(service, item.whatsappRef);
+                      trackWhatsAppConversion(`${conversionPrefix}_${itemIndex}`);
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 font-sans font-bold text-sm sm:text-base text-[#00A843] hover:text-[#008F39] pt-4 border-t border-[#E4E2DD] transition-colors group"
@@ -144,7 +149,7 @@ const DefectsCarousel = ({
             {(() => {
               const item = items[currentSlide];
               const Icon = item.icon;
-              const waUrl = OFFICIAL_WHATSAPP_LINK;
+              const waUrl = getWhatsAppUrl(service, item.whatsappRef);
 
               return (
                 <div className="bg-white border border-[#E4E2DD] rounded-xl p-6 flex flex-col justify-between shadow-md min-h-[320px] transition-all duration-300">
@@ -179,7 +184,10 @@ const DefectsCarousel = ({
 
                   <a
                     href={waUrl}
-                    onClick={() => trackWhatsAppConversion(`${conversionPrefix}_${currentSlide}`)}
+                    onClick={(e) => {
+                      e.currentTarget.href = getWhatsAppUrl(service, item.whatsappRef);
+                      trackWhatsAppConversion(`${conversionPrefix}_${currentSlide}`);
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 font-sans font-bold text-sm text-[#00A843] hover:text-[#008F39] pt-4 border-t border-[#E4E2DD]"

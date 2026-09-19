@@ -1,21 +1,26 @@
 import { useState } from "react";
-import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
 interface ContactProps {
   whatsappMessage?: string;
+  service?: ServiceType;
 }
 
-const Contact = ({}: ContactProps) => {
+const Contact = ({
+  whatsappMessage,
+  service = "home",
+}: ContactProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const directWhatsAppUrl = getWhatsAppUrl(service, whatsappMessage);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     trackWhatsAppConversion("form_submit");
-    window.open(OFFICIAL_WHATSAPP_LINK, "_blank");
+    const dynamicUrl = getWhatsAppUrl(service, whatsappMessage);
+    window.open(dynamicUrl, "_blank");
   };
-
-  const directWhatsAppUrl = OFFICIAL_WHATSAPP_LINK;
 
   return (
     <section id="contato" className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">
@@ -37,7 +42,10 @@ const Contact = ({}: ContactProps) => {
             {/* Big Green WhatsApp Button */}
             <a
               href={directWhatsAppUrl}
-              onClick={() => trackWhatsAppConversion("contact_section_btn")}
+              onClick={(e) => {
+                e.currentTarget.href = getWhatsAppUrl(service, whatsappMessage);
+                trackWhatsAppConversion("contact_section_btn");
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#00A843] hover:bg-[#008F39] text-white font-sans font-bold text-base sm:text-lg px-8 py-4 rounded-md shadow-lg transition-transform active:scale-95"

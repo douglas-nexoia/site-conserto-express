@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
 const bairros = [
   "Centro",
@@ -8,16 +8,20 @@ const bairros = [
   "Cascatinha",
   "Santa Rosália",
   "Vila Cruz",
-  "Zona Sul (Cohab / São Sebastião)",
-  "Zona Leste (Dom Bosco)",
-  "Zona Oeste (Jardim Country)",
-  "Jardim São Bento",
+  "Zona Sul",
+  "Zona Leste",
+  "Zona Oeste",
+  "Jardim Centenário",
   "Vila Nova",
   "Parque Pinheiros",
 ];
 
-const Coverage = () => {
-  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
+interface CoverageProps {
+  service?: ServiceType;
+}
+
+const Coverage = ({ service = "home" }: CoverageProps) => {
+  const whatsappUrl = getWhatsAppUrl(service);
 
   return (
     <section id="onde" className="bg-[#0A141E] text-white py-16 sm:py-24 border-t border-white/10">
@@ -53,7 +57,10 @@ const Coverage = () => {
             {/* Link */}
             <a
               href={whatsappUrl}
-              onClick={() => trackWhatsAppConversion("coverage_cta")}
+              onClick={(e) => {
+                e.currentTarget.href = getWhatsAppUrl(service);
+                trackWhatsAppConversion("coverage_cta");
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-sans font-semibold text-base text-white border-b-2 border-[#00A843] pb-1 hover:text-[#00A843] transition-colors"

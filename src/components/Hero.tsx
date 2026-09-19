@@ -1,4 +1,4 @@
-import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 import facadeImage from "@/assets/conserto_express_fachada_hq.webp";
 
 interface HeroProps {
@@ -8,6 +8,7 @@ interface HeroProps {
   description: string;
   whatsappMessage?: string;
   bgPosition?: string;
+  service?: ServiceType;
 }
 
 const Hero = ({
@@ -15,9 +16,11 @@ const Hero = ({
   badgeCredential = "Loja Física na R. Cel. Virgílio Silva, 1374",
   title,
   description,
+  whatsappMessage,
   bgPosition = "18% center",
+  service = "home",
 }: HeroProps) => {
-  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
+  const whatsappUrl = getWhatsAppUrl(service, whatsappMessage);
 
   return (
     <section className="relative min-h-[600px] lg:min-h-[660px] flex items-center bg-[#0A141E] overflow-hidden">
@@ -71,7 +74,10 @@ const Hero = ({
           <div className="flex flex-wrap gap-3.5 mb-10">
             <a
               href={whatsappUrl}
-              onClick={() => trackWhatsAppConversion("hero_cta")}
+              onClick={(e) => {
+                e.currentTarget.href = getWhatsAppUrl(service, whatsappMessage);
+                trackWhatsAppConversion("hero_cta");
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-[#00A843] hover:bg-[#008F39] text-white font-sans font-bold text-base px-7 py-4 rounded-md shadow-md transition-transform duration-150 active:scale-95"

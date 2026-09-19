@@ -61,7 +61,7 @@ const Index = () => {
       </Helmet>
 
       <div className="min-h-screen bg-[#0A141E] text-white">
-        <Header currentRoute="/" whatsappMessage={WHATSAPP_GELADEIRA} />
+        <Header currentRoute="/" whatsappMessage={WHATSAPP_GELADEIRA} service="geladeira" />
 
         <main>
           {/* Hero with Real Facade Background & Calibrated 18% position to hide adjacent building on the left */}
@@ -77,6 +77,7 @@ const Index = () => {
             description="Não gela, está vazando água ou motor não liga? Atendimento técnico rápido no seu endereço com loja física própria, peças originais e 90 dias de garantia por escrito."
             whatsappMessage={WHATSAPP_GELADEIRA}
             bgPosition="18% center"
+            service="geladeira"
           />
 
           <Brands />
@@ -88,20 +89,21 @@ const Index = () => {
             subtitle="Trabalhamos com equipamentos de precisão para identificar o componente com falha na primeira visita."
             items={fridgeProblems}
             conversionPrefix="fridge_problem"
+            service="geladeira"
           />
 
           <Services />
           <HowItWorks />
-          <Guarantee />
-          <StoreLocation />
-          <Coverage />
+          <Guarantee service="geladeira" />
+          <StoreLocation service="geladeira" />
+          <Coverage service="geladeira" />
           <SocialProof />
           <FAQ />
-          <Contact whatsappMessage={WHATSAPP_GELADEIRA} />
+          <Contact whatsappMessage={WHATSAPP_GELADEIRA} service="geladeira" />
         </main>
 
         <Footer />
-        <WhatsAppFloat whatsappMessage={WHATSAPP_GELADEIRA} />
+        <WhatsAppFloat whatsappMessage={WHATSAPP_GELADEIRA} service="geladeira" />
       </div>
     </>
   );

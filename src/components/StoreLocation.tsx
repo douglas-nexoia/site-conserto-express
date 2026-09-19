@@ -1,9 +1,13 @@
 import { MapPin, Clock, Phone } from "lucide-react";
 import internalPhoto from "@/assets/conserto_express_interno.webp";
-import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
-const StoreLocation = () => {
-  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
+interface StoreLocationProps {
+  service?: ServiceType;
+}
+
+const StoreLocation = ({ service = "home" }: StoreLocationProps) => {
+  const whatsappUrl = getWhatsAppUrl(service);
 
   return (
     <section className="bg-[#07111D] text-white py-16 sm:py-24 border-t border-white/10">
@@ -46,7 +50,10 @@ const StoreLocation = () => {
             <div className="flex flex-wrap gap-3">
               <a
                 href={whatsappUrl}
-                onClick={() => trackWhatsAppConversion("store_location_cta")}
+                onClick={(e) => {
+                  e.currentTarget.href = getWhatsAppUrl(service);
+                  trackWhatsAppConversion("store_location_cta");
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#00A843] hover:bg-[#008F39] text-white font-sans font-bold text-sm sm:text-base px-6 py-3 rounded-md shadow-sm transition-transform active:scale-95"

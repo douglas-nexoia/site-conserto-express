@@ -79,7 +79,7 @@ const BebedourosPurificadores = () => {
       </Helmet>
 
       <div className="min-h-screen bg-[#0A141E] text-white">
-        <Header currentRoute="/bebedouros-e-purificadores" whatsappMessage={WHATSAPP_PURIFICADOR} />
+        <Header currentRoute="/bebedouros-e-purificadores" whatsappMessage={WHATSAPP_PURIFICADOR} service="bebedouro" />
 
         <main>
           {/* Hero Section */}
@@ -95,6 +95,7 @@ const BebedourosPurificadores = () => {
             description="Não gela a água, está vazando ou precisa de troca de refil e higienização? Atendimento técnico ágil em residências, consultórios e empresas com 90 dias de garantia."
             whatsappMessage={WHATSAPP_PURIFICADOR}
             bgPosition="18% center"
+            service="bebedouro"
           />
 
           <Brands />
@@ -106,19 +107,20 @@ const BebedourosPurificadores = () => {
             subtitle="Garantimos água pura, cristalina e gelada para a sua família ou empresa."
             items={purifierProblems}
             conversionPrefix="purifier_problem"
+            service="bebedouro"
           />
 
           <HowItWorks />
-          <Guarantee />
-          <StoreLocation />
-          <Coverage />
+          <Guarantee service="bebedouro" />
+          <StoreLocation service="bebedouro" />
+          <Coverage service="bebedouro" />
           <SocialProof />
           <FAQ customFaqs={purifierFaqs} />
-          <Contact whatsappMessage={WHATSAPP_PURIFICADOR} />
+          <Contact whatsappMessage={WHATSAPP_PURIFICADOR} service="bebedouro" />
         </main>
 
         <Footer />
-        <WhatsAppFloat whatsappMessage={WHATSAPP_PURIFICADOR} />
+        <WhatsAppFloat whatsappMessage={WHATSAPP_PURIFICADOR} service="bebedouro" />
       </div>
     </>
   );

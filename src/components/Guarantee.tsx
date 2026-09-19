@@ -1,8 +1,12 @@
 import { ShieldCheck, MapPin, Wrench } from "lucide-react";
-import { trackWhatsAppConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
-const Guarantee = () => {
-  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
+interface GuaranteeProps {
+  service?: ServiceType;
+}
+
+const Guarantee = ({ service = "home" }: GuaranteeProps) => {
+  const whatsappUrl = getWhatsAppUrl(service);
 
   return (
     <section className="bg-[#F5F4F1] text-[#14212E] py-16 sm:py-24">
@@ -43,7 +47,10 @@ const Guarantee = () => {
 
             <a
               href={whatsappUrl}
-              onClick={() => trackWhatsAppConversion("guarantee_cta")}
+              onClick={(e) => {
+                e.currentTarget.href = getWhatsAppUrl(service);
+                trackWhatsAppConversion("guarantee_cta");
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#00A843] hover:bg-[#008F39] text-white font-sans font-bold text-base px-6 py-3.5 rounded-md shadow-sm transition-transform active:scale-95"

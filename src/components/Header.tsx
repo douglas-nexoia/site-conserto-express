@@ -1,15 +1,18 @@
 import { Phone } from "lucide-react";
-import { trackWhatsAppConversion, trackPhoneConversion, OFFICIAL_WHATSAPP_LINK } from "@/lib/tracking";
+import { trackWhatsAppConversion, trackPhoneConversion, getWhatsAppUrl, ServiceType } from "@/lib/tracking";
 
 interface HeaderProps {
   currentRoute?: string;
   whatsappMessage?: string;
+  service?: ServiceType;
 }
 
 const Header = ({
   currentRoute = "/",
+  whatsappMessage,
+  service = "home",
 }: HeaderProps) => {
-  const whatsappUrl = OFFICIAL_WHATSAPP_LINK;
+  const whatsappUrl = getWhatsAppUrl(service, whatsappMessage);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#0A141E]/92 backdrop-blur-[14px] border-b border-white/10 transition-all duration-200">
@@ -70,7 +73,10 @@ const Header = ({
           {/* Primary WhatsApp CTA Button */}
           <a
             href={whatsappUrl}
-            onClick={() => trackWhatsAppConversion("header_cta")}
+            onClick={(e) => {
+              e.currentTarget.href = getWhatsAppUrl(service, whatsappMessage);
+              trackWhatsAppConversion("header_cta");
+            }}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#00A843] hover:bg-[#008F39] text-white font-sans font-bold text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 rounded-md shadow-sm transition-all duration-150 active:scale-95"
