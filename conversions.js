@@ -121,10 +121,9 @@
   function registrarCliqueAds(origem) {
     if (!hasAdsTraffic || !activeProtocol) return;
 
-    const rawCode = activeProtocol.replace(`#${EMPRESA_PREFIX}-`, '');
     const payload = JSON.stringify({
       empresa: EMPRESA_PREFIX,
-      codigo: rawCode,
+      codigo: activeProtocol,
       gclid: activeGclid,
       wbraid: activeWbraid,
       gbraid: activeGbraid,
@@ -137,7 +136,8 @@
     let sent = false;
     if (navigator.sendBeacon) {
       try {
-        sent = navigator.sendBeacon(ENDPOINT_REGISTRO_CLIQUE, payload);
+        const blob = new Blob([payload], { type: 'application/json' });
+        sent = navigator.sendBeacon(ENDPOINT_REGISTRO_CLIQUE, blob);
       } catch (e) {
         sent = false;
       }
@@ -146,7 +146,8 @@
     if (!sent && window.fetch) {
       fetch(ENDPOINT_REGISTRO_CLIQUE, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
         body: payload,
         keepalive: true
       }).catch(function () {});
@@ -154,26 +155,66 @@
   }
 
   // 6. CONVERSÃO GOOGLE ADS DIRETA (Zero TBT)
-  function dispararConversaoAds(sendToLabel, callback) {
+  function dispararConversaoWhatsApp() {
+    if (typeof window.loadGtag === 'function') {
+      window.loadGtag();
+    }
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: sendToLabel,
-        event_callback: callback
-      });
-    } else if (callback) {
-      callback();
+      try {
+        window.gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
+          value: 1.0,
+          currency: 'BRL',
+          transaction_id: activeProtocol || undefined
+        });
+      } catch (err) {
+        console.error('Erro ao reportar conversao Google Ads WhatsApp:', err);
+      }
+    }
+  }
+
+  function dispararConversaoTelefone() {
+    if (typeof window.loadGtag === 'function') {
+      window.loadGtag();
+    }
+    if (typeof window.gtag === 'function') {
+      try {
+        window.gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_PHONE_CONVERSION
+        });
+      } catch (err) {
+        console.error('Erro ao reportar conversao Google Ads Telefone:', err);
+      }
     }
   }
 
   // 7. MONTAGEM DE LINK DO WHATSAPP
   function buildWhatsAppUrl(serviceKey) {
     const baseMsg = MESSAGES[serviceKey] || MESSAGES.home;
-    const finalMsg = activeProtocol ? `${baseMsg} Protocolo: ${activeProtocol}` : baseMsg;
+    const finalMsg = activeProtocol ? `${baseMsg} [Protocolo: ${activeProtocol}]` : baseMsg;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(finalMsg)}`;
   }
 
   // 8. INTERCEPTAÇÃO E ATIVAÇÃO DE LINKS & BOTÕES
   function setupTrackingListeners() {
+    // Sincronização dinâmica de Radio Pills da Seção 10 (Contato)
+    const pillRadios = document.querySelectorAll('.pill-radio');
+    pillRadios.forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        const contactBtn = document.querySelector('#contato a[data-track="whatsapp"]');
+        if (contactBtn) {
+          let svc = 'geladeira';
+          if (this.value === 'lavadora' || this.value === 'lavadora_top') svc = 'lavadora';
+          else if (this.value === 'lava_seca') svc = 'lavaESeca';
+          else if (this.value === 'purificador') svc = 'purificador';
+          else if (this.value === 'freezer' || this.value === 'geladeira') svc = 'geladeira';
+
+          contactBtn.setAttribute('data-service', svc);
+          contactBtn.setAttribute('href', buildWhatsAppUrl(svc));
+        }
+      });
+    });
+
     // A) Links de WhatsApp
     const waButtons = document.querySelectorAll('a[data-track="whatsapp"], button[data-track="whatsapp"]');
     waButtons.forEach(function (btn) {
@@ -187,25 +228,30 @@
       }
 
       btn.addEventListener('click', function (e) {
-        // Dispara registro Supabase imediatamente
-        registrarCliqueAds('whatsapp_' + service);
+        const currentService = btn.getAttribute('data-service') || service;
+        const currentUrl = buildWhatsAppUrl(currentService);
 
-        // Dispara conversão no Google Ads
-        dispararConversaoAds(GOOGLE_ADS_WHATSAPP_CONVERSION);
+        // Dispara registro Supabase imediatamente
+        registrarCliqueAds('whatsapp_' + currentService);
+
+        // Dispara conversão no Google Ads com transaction_id
+        dispararConversaoWhatsApp();
 
         if (btn.tagName === 'BUTTON') {
           e.preventDefault();
-          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          window.open(currentUrl, '_blank', 'noopener,noreferrer');
+        } else {
+          btn.setAttribute('href', currentUrl);
         }
       });
     });
 
     // B) Links de Telefone / Ligação direta
-    const phoneButtons = document.querySelectorAll('a[data-track="phone"], button[data-track="phone"]');
+    const phoneButtons = document.querySelectorAll('a[data-track="phone"], button[data-track="phone"], a[href^="tel:"]');
     phoneButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         registrarCliqueAds('telefone_ligacao');
-        dispararConversaoAds(GOOGLE_ADS_PHONE_CONVERSION);
+        dispararConversaoTelefone();
       });
     });
   }
@@ -222,6 +268,8 @@
     protocol: activeProtocol,
     hasAdsTraffic: hasAdsTraffic,
     buildWhatsAppUrl: buildWhatsAppUrl,
-    registrarCliqueAds: registrarCliqueAds
+    registrarCliqueAds: registrarCliqueAds,
+    dispararConversaoWhatsApp: dispararConversaoWhatsApp,
+    dispararConversaoTelefone: dispararConversaoTelefone
   };
 })();
