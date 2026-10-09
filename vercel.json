@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/lavadoras",
@@ -39,6 +41,18 @@
     {
       "source": "/geladeiras",
       "destination": "/index.html"
+    },
+    {
+      "source": "/geladeira",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lava-e-seca",
+      "destination": "/lava-e-seca.html"
+    },
+    {
+      "source": "/lava-e-seca/",
+      "destination": "/lava-e-seca.html"
     }
   ]
 }
