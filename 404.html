@@ -4,43 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página Não Encontrada (404) | Conserto Express Poços de Caldas</title>
-  <meta name="description" content="A página acessada não foi encontrada, mas nossos técnicos especializados estão de plantão em Poços de Caldas. Chame no WhatsApp para agendamento rápido.">
+  <meta name="description" content="A página acessada não foi encontrada, mas nossos técnicos especializados estão de plantão. Chame no WhatsApp para agendar seu atendimento no mesmo dia.">
   <meta name="robots" content="noindex, follow">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- Google tag (gtag.js) - CONSERTO EXPRESS (Zero TBT scheduleGtag) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-11456532846');
-
-    function loadGtag(){
-      if (window._gtagLoaded) return;
-      window._gtagLoaded = true;
-      var s = document.createElement('script');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-11456532846';
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    window.loadGtag = loadGtag;
-    function scheduleGtag(){
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadGtag, { timeout: 2500 });
-      } else {
-        setTimeout(loadGtag, 2000);
-      }
-    }
-    if (document.readyState === 'complete') {
-      setTimeout(scheduleGtag, 2000);
-    } else {
-      window.addEventListener('load', function(){ setTimeout(scheduleGtag, 2000); });
-    }
-    ['touchstart', 'scroll', 'click', 'keydown', 'pointerdown'].forEach(function(ev){
-      window.addEventListener(ev, loadGtag, { once: true, passive: true });
-    });
-  </script>
+  <link rel="alternate icon" type="image/png" href="/favicon.png">
 
   <!-- Typography assíncrona não-bloqueante -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,15 +23,15 @@
       --base: #0A141E;
       --base-2: #122138;
       --base-3: #1B2F4D;
-      --acc: #0284C7;
-      --acc-light: #38BDF8;
-      --acc-hover: #0369A1;
+      --acc: #00A843;
+      --acc-light: #4ADE80;
+      --acc-hover: #008F39;
       --light: #F8FAFC;
       --surface: #FFFFFF;
       --ink: #0F172A;
       --ink-muted: #334155;
-      --green-btn: #00A843;
-      --green-btn-hover: #008F39;
+      --green-btn: #22C55E;
+      --green-btn-hover: #16A34A;
       --green-dark: #062B14;
     }
 
@@ -102,170 +70,175 @@
       justify-content: space-between;
       gap: 16px;
     }
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo-badge {
-      background: var(--acc);
-      color: #fff;
-      font-family: 'Archivo', sans-serif;
-      font-weight: 900;
-      font-size: 14px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      letter-spacing: .05em;
-    }
-    .logo-text {
+    .brand {
       font-family: 'Archivo', sans-serif;
       font-weight: 800;
       font-size: 20px;
       letter-spacing: -.02em;
-      color: #fff;
     }
-    .header-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .header-links a {
+    .phone-link {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 14px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.8);
-      transition: color .15s;
-    }
-    .header-links a:hover {
-      color: #fff;
-    }
-    .header-phone {
-      display: flex;
+      color: #FFFFFF;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--acc-light);
-      white-space: nowrap;
+    }
+    .dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-btn);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
     }
 
-    /* Main Error Section */
+    /* Main 404 Hero */
     main {
       flex: 1;
       display: flex;
       align-items: center;
-      padding: 60px 0;
+      padding: clamp(64px, 10vw, 120px) 0;
     }
     .error-card {
-      background: var(--base-2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 48px 36px;
-      text-align: center;
-      max-width: 680px;
+      max-width: 780px;
       margin: 0 auto;
+      text-align: center;
     }
     .error-code {
       font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(64px, 10vw, 96px);
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .15em;
       color: var(--acc-light);
-      line-height: 1;
-      margin-bottom: 12px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 100px;
     }
-    .error-title {
+    h1 {
       font-family: 'Archivo', sans-serif;
-      font-size: clamp(24px, 4vw, 32px);
       font-weight: 800;
-      margin-bottom: 16px;
+      font-size: clamp(28px, 4.5vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      margin-bottom: 18px;
+      text-wrap: balance;
     }
     .error-desc {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 32px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(16px, 2vw, 18px);
+      color: #CBD5E1;
+      max-width: 620px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
     }
-    .routes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-bottom: 32px;
-      text-align: left;
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 56px;
     }
-    .route-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      padding: 14px 16px;
-      transition: all .15s;
-    }
-    .route-item:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--acc);
-      transform: translateY(-2px);
-    }
-    .route-item strong {
-      display: block;
-      font-size: 14px;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-    .route-item span {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.6);
-    }
-    .btn-wa {
+    .btn-green {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      gap: 12px;
       background: var(--green-btn);
-      color: #fff;
+      color: var(--green-dark) !important;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 17px;
       padding: 16px 32px;
       border-radius: 8px;
-      transition: background .15s, transform .1s;
+      transition: filter 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
     }
-    .btn-wa:hover {
-      background: var(--green-btn-hover);
-      transform: translateY(-2px);
+    .btn-green:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #FFFFFF !important;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 16px 26px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
     }
 
+    /* Links de Serviços */
+    .services-nav {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 36px;
+    }
+    .services-nav h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 18px;
+    }
+    .services-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .chip-link {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #E2E8F0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .chip-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--acc-light);
+      color: #FFFFFF;
+    }
+
+    /* Footer */
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       padding: 24px 0;
       text-align: center;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    @media (max-width: 768px) {
-      .header-links { display: none; }
-      .error-card { padding: 32px 20px; }
-      .routes-grid { grid-template-columns: 1fr; }
+      color: #94A3B8;
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="container header-inner">
-      <div class="logo-box">
-        <a href="/" style="display:flex;align-items:center;gap:12px;">
-          <div class="logo-badge">CE</div>
-          <div class="logo-text">Conserto Express</div>
-        </a>
-      </div>
-      <nav class="header-links">
-        <a href="/">Início</a>
-        <a href="/lavadoras">Lavadoras</a>
-        <a href="/bebedouros-e-purificadores">Bebedouros</a>
-        <a href="/lava-e-seca">Lava e Seca</a>
-      </nav>
-      <a href="tel:553520390020" class="header-phone" data-track="phone">
-        <span>📞 (35) 2039-0020</span>
+      <a href="/" class="brand" aria-label="Conserto Express Conserto Express Poços de Caldas - Início">
+        <div style="width:38px; height:38px; border-radius:8px; background:#00A843; display:flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-weight:900; font-size:16px; color:#fff; flex-shrink:0;">CE</div>
+        <div style="display:flex; flex-direction:column; line-height:1.05;">
+          <div style="display:flex; align-items:center; font-family:'Archivo',sans-serif; font-weight:800; font-size:20px; letter-spacing:-0.02em; color:#FFFFFF; white-space:nowrap;">
+            <span>CONSERTO</span>
+            <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background-color:#00A843; margin:0 5px;"></span>
+            <span style="color:#4ADE80;">EXPRESS</span>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.18em; color:#94A3B8; margin-top:2px; white-space:nowrap;">
+            Poços de Caldas &middot; Loja Física
+          </span>
+        </div>
+      </a>
+      <a href="tel:553520390020" class="phone-link" data-track="phone">
+        <span class="dot-pulse"></span>
+        (35) 2039-0020
       </a>
     </div>
   </header>
@@ -273,41 +246,37 @@
   <main>
     <div class="container">
       <div class="error-card">
-        <div class="error-code">404</div>
-        <h1 class="error-title">Página não encontrada</h1>
+        <span class="error-code">Aviso de Rota · Código 404</span>
+        <h1>Página não encontrada, mas nossos técnicos continuam de plantão.</h1>
         <p class="error-desc">
-          O endereço que você tentou acessar mudou ou foi digitado incorretamente. Escolha uma das nossas especialidades abaixo ou fale com a nossa equipe em Poços de Caldas:
+          O endereço acessado mudou ou não existe, mas nossa equipe especializada está disponível agora mesmo para agendar sua visita técnica com garantia formal por escrito.
         </p>
 
-        <div class="routes-grid">
-          <a href="/" class="route-item">
-            <strong>Geladeiras e Freezers</strong>
-            <span>Frost Free, Duplex e Inverter</span>
+        <div class="cta-group">
+          <a href="#" class="btn-green" data-track="whatsapp" data-service="home">
+            Chamar no WhatsApp →
           </a>
-          <a href="/lavadoras" class="route-item">
-            <strong>Máquinas de Lavar</strong>
-            <span>Top Load, mecânica e placas</span>
-          </a>
-          <a href="/bebedouros-e-purificadores" class="route-item">
-            <strong>Bebedouros & Purificadores</strong>
-            <span>Troca de refil e refrigeração</span>
-          </a>
-          <a href="/lava-e-seca" class="route-item">
-            <strong>Lava e Seca & Secadoras</strong>
-            <span>Erros de painel e manutenção</span>
+          <a href="/" class="btn-outline">
+            Ir para a Página Inicial
           </a>
         </div>
 
-        <a href="https://wa.me/5535999587581?text=Ol%C3%A1!%20Vim%20pelo%20site,%20gostaria%20de%20um%20atendimento." class="btn-wa" data-track="whatsapp" data-service="home">
-          <span>💬 Chamar no WhatsApp</span>
-        </a>
+        <div class="services-nav">
+          <h3>Especialidades Atendidas em Domicílio</h3>
+          <div class="services-chips">
+            <a href="/geladeira" class="chip-link">Geladeiras &amp; Freezers</a>
+            <a href="/lavadora" class="chip-link">Máquinas de Lavar</a>
+            <a href="/lava-e-seca" class="chip-link">Lava e Seca Front Load</a>
+            <a href="/bebedouros-e-purificadores" class="chip-link">Bebedouros &amp; Purificadores</a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      Conserto Express Assistência Técnica · Rua Cel. Virgílio Silva, 1374 - Poços de Caldas / MG · Atendimento em domicílio
+      <p>&copy; 2026 Conserto Express Conserto Express Poços de Caldas &middot; Poços de Caldas e Região. Atendimento em Domicílio e Loja Física com 90 Dias de Garantia.</p>
     </div>
   </footer>
 

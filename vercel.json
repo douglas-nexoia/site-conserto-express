@@ -1,59 +1,14 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "framework": null,
   "rewrites": [
-    {
-      "source": "/lavadoras",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadoras/",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadora",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/lavadora/",
-      "destination": "/lavadoras.html"
-    },
-    {
-      "source": "/bebedouros-e-purificadores",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/bebedouros-e-purificadores/",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/bebedouros",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/purificadores",
-      "destination": "/bebedouros-e-purificadores.html"
-    },
-    {
-      "source": "/conserto-geladeira",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/geladeiras",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/geladeira",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/lava-e-seca",
-      "destination": "/lava-e-seca.html"
-    },
-    {
-      "source": "/lava-e-seca/",
-      "destination": "/lava-e-seca.html"
-    }
+    { "source": "/geladeira", "destination": "/geladeira.html" },
+    { "source": "/geladeiras", "destination": "/geladeira.html" },
+    { "source": "/lavadoras", "destination": "/lavadora.html" },
+    { "source": "/lavadora", "destination": "/lavadora.html" },
+    { "source": "/lava-e-seca", "destination": "/lava-e-seca.html" },
+    { "source": "/bebedouros-e-purificadores", "destination": "/bebedouros-e-purificadores.html" },
+    { "source": "/bebedouros", "destination": "/bebedouros-e-purificadores.html" },
+    { "source": "/purificadores", "destination": "/bebedouros-e-purificadores.html" }
   ]
 }
