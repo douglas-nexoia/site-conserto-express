@@ -3,13 +3,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/geladeira", "destination": "/geladeira.html" },
-    { "source": "/geladeiras", "destination": "/geladeira.html" },
-    { "source": "/lavadoras", "destination": "/lavadora.html" },
-    { "source": "/lavadora", "destination": "/lavadora.html" },
-    { "source": "/lava-e-seca", "destination": "/lava-e-seca.html" },
-    { "source": "/bebedouros-e-purificadores", "destination": "/bebedouros-e-purificadores.html" },
-    { "source": "/bebedouros", "destination": "/bebedouros-e-purificadores.html" },
-    { "source": "/purificadores", "destination": "/bebedouros-e-purificadores.html" }
+    { "source": "/geladeiras", "destination": "/geladeira" },
+    { "source": "/lavadoras", "destination": "/lavadora" },
+    { "source": "/bebedouros", "destination": "/bebedouros-e-purificadores" },
+    { "source": "/purificadores", "destination": "/bebedouros-e-purificadores" },
+    { "source": "/purificador", "destination": "/bebedouros-e-purificadores" }
   ]
 }
