@@ -197,21 +197,62 @@
 
   // 8. INTERCEPTAÇÃO E ATIVAÇÃO DE LINKS & BOTÕES
   function setupTrackingListeners() {
-    // Sincronização dinâmica de Radio Pills da Seção 10 (Contato)
-    const pillRadios = document.querySelectorAll('.pill-radio');
-    pillRadios.forEach(function (radio) {
+    // Sincronização dinâmica de Radio Pills da Seção de Contato
+    const deviceRadios = document.querySelectorAll('.pill-radio, input[name="device"]');
+    deviceRadios.forEach(function (radio) {
       radio.addEventListener('change', function () {
         const contactBtn = document.querySelector('#contato a[data-track="whatsapp"]');
         if (contactBtn) {
           let svc = 'geladeira';
-          if (this.value === 'lavadora' || this.value === 'lavadora_top') svc = 'lavadora';
-          else if (this.value === 'lava_seca') svc = 'lavaESeca';
-          else if (this.value === 'purificador') svc = 'purificador';
-          else if (this.value === 'freezer' || this.value === 'geladeira') svc = 'geladeira';
+          const val = this.value.toLowerCase();
+          if (val.includes('lavadora') || val.includes('lavar')) svc = 'lavadora';
+          else if (val.includes('lava e seca') || val.includes('lava_seca') || val.includes('secadora')) svc = 'lavaESeca';
+          else if (val.includes('purificador') || val.includes('bebedouro')) svc = 'purificador';
+          else if (val.includes('geladeira') || val.includes('freezer')) svc = 'geladeira';
 
           contactBtn.setAttribute('data-service', svc);
           contactBtn.setAttribute('href', buildWhatsAppUrl(svc));
         }
+      });
+    });
+
+    // Submissão do Formulário de Contato Direto (#quick-form)
+    const quickForm = document.getElementById('quick-form');
+    if (quickForm) {
+      quickForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const nameInput = document.getElementById('form-name');
+        const neighInput = document.getElementById('form-neighborhood');
+        const name = nameInput ? nameInput.value.trim() : '';
+        const neighborhood = neighInput ? neighInput.value.trim() : '';
+        const selectedRadio = document.querySelector('input[name="device"]:checked') || document.querySelector('input[name="aparelho"]:checked');
+        const deviceSelected = selectedRadio ? selectedRadio.value : 'Aparelho';
+
+        let svc = 'home';
+        const val = deviceSelected.toLowerCase();
+        if (val.includes('lavadora') || val.includes('lavar')) svc = 'lavadora';
+        else if (val.includes('lava e seca') || val.includes('lava_seca') || val.includes('secadora')) svc = 'lavaESeca';
+        else if (val.includes('purificador') || val.includes('bebedouro')) svc = 'purificador';
+        else if (val.includes('geladeira') || val.includes('freezer')) svc = 'geladeira';
+
+        let customMsg = `Olá! Vim pelo site, gostaria de um atendimento. Meu nome é ${name}, moro em ${neighborhood} e preciso de conserto para: ${deviceSelected}.`;
+        if (activeProtocol) {
+          customMsg += ` [Protocolo: ${activeProtocol}]`;
+        }
+        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMsg)}`;
+
+        registrarCliqueAds('whatsapp_form_' + svc);
+        dispararConversaoWhatsApp();
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
+
+    // Acordeão nativo de FAQ (garante abertura e fechamento sem bibliotecas externas)
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('active'); });
+        if (!wasActive) item.classList.add('active');
       });
     });
 
