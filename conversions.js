@@ -155,37 +155,35 @@
   }
 
   // 6. CONVERSÃO GOOGLE ADS DIRETA (Zero TBT)
-  function dispararConversaoWhatsApp() {
-    if (typeof window.loadGtag === 'function') {
-      window.loadGtag();
-    }
-    if (typeof window.gtag === 'function') {
-      try {
-        window.gtag('event', 'conversion', {
-          send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
-          value: 1.0,
-          currency: 'BRL',
-          transaction_id: activeProtocol || undefined
-        });
-      } catch (err) {
-        console.error('Erro ao reportar conversao Google Ads WhatsApp:', err);
-      }
-    }
+  function dispararConversaoWhatsApp(onDone) {
+    var done = false;
+    function finish(){ if (!done) { done = true; if (onDone) onDone(); } }
+    if (typeof window.loadGtag === 'function') window.loadGtag();
+    try {
+      window.gtag('event', 'conversion', {
+        send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
+        value: 1.0,
+        currency: 'BRL',
+        transaction_id: activeProtocol || undefined,
+        transport_type: 'beacon',
+        event_callback: finish
+      });
+    } catch (e) { finish(); }
+    setTimeout(finish, 1200); // teto de segurança: nunca prende o lead (cobre adblock)
   }
 
-  function dispararConversaoTelefone() {
-    if (typeof window.loadGtag === 'function') {
-      window.loadGtag();
-    }
-    if (typeof window.gtag === 'function') {
-      try {
-        window.gtag('event', 'conversion', {
-          send_to: GOOGLE_ADS_PHONE_CONVERSION
-        });
-      } catch (err) {
-        console.error('Erro ao reportar conversao Google Ads Telefone:', err);
-      }
-    }
+  function dispararConversaoTelefone(onDone) {
+    var done = false;
+    function finish(){ if (!done) { done = true; if (onDone) onDone(); } }
+    if (typeof window.loadGtag === 'function') window.loadGtag();
+    try {
+      window.gtag('event', 'conversion', {
+        send_to: GOOGLE_ADS_PHONE_CONVERSION,
+        transport_type: 'beacon',
+        event_callback: finish
+      });
+    } catch (e) { finish(); }
+    setTimeout(finish, 1200);
   }
 
   // 7. MONTAGEM DE LINK DO WHATSAPP
@@ -242,8 +240,14 @@
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMsg)}`;
 
         registrarCliqueAds('whatsapp_form_' + svc);
-        dispararConversaoWhatsApp();
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        if (window._gtagReady) {
+          dispararConversaoWhatsApp();
+          window.open(waUrl, '_blank', 'noopener,noreferrer');
+        } else {
+          dispararConversaoWhatsApp(function () {
+            window.location.href = waUrl;
+          });
+        }
       });
     }
 
@@ -262,7 +266,7 @@
       const service = btn.getAttribute('data-service') || 'home';
       const targetUrl = buildWhatsAppUrl(service);
 
-      if (btn.tagName === 'A') {
+      if (btn.tagName === 'A' && (!btn.getAttribute('href') || btn.getAttribute('href') === '#')) {
         btn.setAttribute('href', targetUrl);
         btn.setAttribute('target', '_blank');
         btn.setAttribute('rel', 'noopener noreferrer');
@@ -275,24 +279,50 @@
         // Dispara registro Supabase imediatamente
         registrarCliqueAds('whatsapp_' + currentService);
 
-        // Dispara conversão no Google Ads com transaction_id
-        dispararConversaoWhatsApp();
-
         if (btn.tagName === 'BUTTON') {
           e.preventDefault();
-          window.open(currentUrl, '_blank', 'noopener,noreferrer');
-        } else {
-          btn.setAttribute('href', currentUrl);
+          if (window._gtagReady) {
+            dispararConversaoWhatsApp();
+            window.open(currentUrl, '_blank', 'noopener,noreferrer');
+          } else {
+            dispararConversaoWhatsApp(function () {
+              window.location.href = currentUrl;
+            });
+          }
+          return;
         }
+
+        if (window._gtagReady) {            // tag já carregada: comportamento atual, zero atraso
+          btn.setAttribute('href', currentUrl);
+          dispararConversaoWhatsApp();
+          return;
+        }
+
+        e.preventDefault();                  // tag ainda carregando: espera no máx. 1,2s
+        dispararConversaoWhatsApp(function () {
+          window.location.href = currentUrl;
+        });
       });
     });
 
     // B) Links de Telefone / Ligação direta
     const phoneButtons = document.querySelectorAll('a[data-track="phone"], button[data-track="phone"], a[href^="tel:"]');
     phoneButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
         registrarCliqueAds('telefone_ligacao');
-        dispararConversaoTelefone();
+        if (window._gtagReady) {
+          dispararConversaoTelefone();
+          return;
+        }
+        if (btn.tagName === 'A' && btn.getAttribute('href') && btn.getAttribute('href').startsWith('tel:')) {
+          const telUrl = btn.getAttribute('href');
+          e.preventDefault();
+          dispararConversaoTelefone(function () {
+            window.location.href = telUrl;
+          });
+        } else {
+          dispararConversaoTelefone();
+        }
       });
     });
   }
